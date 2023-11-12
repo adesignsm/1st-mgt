@@ -19,4 +19,11 @@
     text-transform: uppercase;
     font-weight: lighter;
     cursor: pointer;
+    transition: all .3s ease;
+}
+
+.header h1:hover {
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
