@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Hemi Head';
+    src: url(./Assets/Fonts/hemi_head.otf);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100vw;
+}
+
+* {
+    user-select: none;
+}
+
+.header {
+    font-family: 'Hemi Head';
+}
+
+.navigation {
+    font-family: 'Hemi Head';
+}
+
+.copyrights {
+    font-family: 'Hemi Head';
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
