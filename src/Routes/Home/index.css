@@ -9,8 +9,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    object-fit: fill;
-    background-repeat: no-repeat;
-    background-size: cover;
+    object-fit: cover;
     z-index: -1;
 }
