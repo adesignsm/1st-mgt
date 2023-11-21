@@ -12,7 +12,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        const homePath = 'http://localhost:3000/' || 'https://1st-mgt.com' || 'https://1st-mgt.vercel.app/';
+        const homePath = 'http://localhost:3000/' || 'https://1st-mgt.vercel.app/';
         if (window.location.href === homePath) {
             setIsHome(true);
             setMenuOpen(true);
