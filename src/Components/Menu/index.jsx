@@ -11,16 +11,8 @@ import DEFAULT_IMAGE_5 from '../../Assets/DefaultHomePageMedia/5.jpg';
 const Menu = ({ data, updateMenuOpen }) => {
     const [isHome, setIsHome] = useState(null);
 
-    const backgrounImageUrls = [
-        DEFAULT_IMAGE_1,
-        DEFAULT_IMAGE_2,
-        DEFAULT_IMAGE_3,
-        DEFAULT_IMAGE_4,
-        DEFAULT_IMAGE_5
-    ];
-
     useEffect(() => {
-        const homePath = 'http://localhost:3000/' || 'https://1st-mgt.vercel.app/';
+        const homePath = 'https://1st-mgt.vercel.app/'; //change to http://localhost:3000/ when working on dev
         window.location.href === homePath ? setIsHome(true) : setIsHome(false);
     }, []);
 

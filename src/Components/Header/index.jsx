@@ -12,7 +12,8 @@ const Header = () => {
     }
 
     useEffect(() => {
-        const homePath = 'http://localhost:3000/' || 'https://1st-mgt.vercel.app/';
+        const homePath = 'https://1st-mgt.vercel.app/'; //change to http://localhost:3000/ when working on dev
+        
         if (window.location.href === homePath) {
             setIsHome(true);
             setMenuOpen(true);
