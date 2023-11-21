@@ -20,7 +20,7 @@ const Menu = ({ data, updateMenuOpen }) => {
     ];
 
     useEffect(() => {
-        const homePath = 'http://localhost:3000/' || 'https://1st-mgt.com';
+        const homePath = 'http://localhost:3000/' || 'https://1st-mgt.com' || 'https://1st-mgt.vercel.app/';
         window.location.href === homePath ? setIsHome(true) : setIsHome(false);
     }, []);
 
