@@ -13,7 +13,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
 
     useEffect(() => {
         const homePath = 'http://localhost:3000/';
-        const secondaryHomePath = 'http://1st-mgt.vercel.app/';
+        const secondaryHomePath = 'https://1st-mgt.vercel.app/';
         (window.location.href === homePath || window.location.href === secondaryHomePath)
          ? setIsHome(true) 
          : setIsHome(false);
