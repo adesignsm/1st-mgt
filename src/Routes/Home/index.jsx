@@ -1,10 +1,12 @@
+import Entry from '../../Components/Entry';
 import './index.css';
 
 const Home = () => {
     return (
         <>
-            <main className='home-page'>
-                <img className='background-image' src='https://martinvorel.com/wp-content/uploads/2018/12/minimalist-landscape-winter-vineyard-.jpg'/>
+            <Entry />
+            <main className='home-page with-gradient'>
+                <img className='background-image' src=''/>
             </main>
         </>
     )

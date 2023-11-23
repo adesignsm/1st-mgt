@@ -1,16 +1,19 @@
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
     display: flex;
     width: 96vw;
     justify-content: space-between;
     padding-left: 1rem;
     padding-right: 1rem;
+    align-items: center;
+    background-color: transparent;
 }
 
 .header .left-column {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 250px;
 }
 
@@ -26,4 +29,8 @@
     background: -webkit-linear-gradient(#eee, #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.header .left-column img {
+    width: 60%;
 }

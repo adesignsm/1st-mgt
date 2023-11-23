@@ -8,17 +8,18 @@ import DEFAULT_IMAGE_3 from '../../Assets/DefaultHomePageMedia/3.jpg';
 import DEFAULT_IMAGE_4 from '../../Assets/DefaultHomePageMedia/4.jpg';
 import DEFAULT_IMAGE_5 from '../../Assets/DefaultHomePageMedia/5.jpg';
 
-const Menu = ({ data, updateMenuOpen }) => {
+const Menu = ({ menuOpen, updateMenuOpen }) => {
     const [isHome, setIsHome] = useState(null);
 
     useEffect(() => {
-        const homePath = 'https://1st-mgt.vercel.app/'; //change to http://localhost:3000/ when working on dev
-        window.location.href === homePath ? setIsHome(true) : setIsHome(false);
-    }, []);
+        const homePath = 'http://localhost:3000/';
+        const secondaryHomePath = 'http://1st-mgt.vercel.app/';
+        (window.location.href === homePath || window.location.href === secondaryHomePath)
+         ? setIsHome(true) 
+         : setIsHome(false);
+    }, [isHome]);
 
     const handleDropdownToggle = (e) => {
-        console.log(e.target);
-
         if (e.target.classList.contains('main-navigation-item') && !e.target.nextSibling.classList.contains('show')) {
             e.target.nextSibling.classList.add('show');
         } else if (e.target.classList.contains('main-navigation-item') && e.target.nextSibling.classList.contains('show')) {
@@ -27,25 +28,28 @@ const Menu = ({ data, updateMenuOpen }) => {
     }
 
     const handleBackgroundImageChange = (e) => {
+        const homeContainer = document.getElementsByClassName('home-page')[0];
         const backgroundImage = document.getElementsByClassName('background-image');
-        console.log(e.target.innerText.toLowerCase())
-
-        if (e.target.innerText.toLowerCase() === '1st mgt') {
-            backgroundImage[0].src = DEFAULT_IMAGE_1;
-        } else if (e.target.innerText.toLowerCase() === 'girls club') {
-            backgroundImage[0].src = DEFAULT_IMAGE_2;
-        } else if (e.target.innerText.toLowerCase() === 'boys squad') {
-            backgroundImage[0].src = DEFAULT_IMAGE_3;
-        } else if (e.target.innerText.toLowerCase() === 'news') {
-            backgroundImage[0].src = DEFAULT_IMAGE_4;
-        } else if (e.target.innerText.toLowerCase() === 'contact') {
-            backgroundImage[0].src = DEFAULT_IMAGE_5;
+        
+        if (isHome) {
+            homeContainer.classList.remove('with-gradient')
+            if (e.target.innerText.toLowerCase() === '1st mgt') {
+                backgroundImage[0].src = DEFAULT_IMAGE_1;
+            } else if (e.target.innerText.toLowerCase() === 'girls club') {
+                backgroundImage[0].src = DEFAULT_IMAGE_2;
+            } else if (e.target.innerText.toLowerCase() === 'boys squad') {
+                backgroundImage[0].src = DEFAULT_IMAGE_3;
+            } else if (e.target.innerText.toLowerCase() === 'news') {
+                backgroundImage[0].src = DEFAULT_IMAGE_4;
+            } else if (e.target.innerText.toLowerCase() === 'contact') {
+                backgroundImage[0].src = DEFAULT_IMAGE_5;
+            }
         }
     }
 
     return (
         <>
-            <nav className={`navigation ${data ? 'showMenu' : 'hideMenu'}`}>
+            <nav className={`navigation ${menuOpen ? 'showMenu' : 'hideMenu'}`}>
                 <div className='left-column'>
                     <ul className='main-navigation'>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>

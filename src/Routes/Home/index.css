@@ -3,6 +3,14 @@
     width: 100%;
 }
 
+.with-gradient {
+    background: rgb(247,207,225);
+    background: -moz-linear-gradient(15deg, rgba(247,207,225,1) 0%, rgba(217,217,217,1) 64%);
+    background: -webkit-linear-gradient(15deg, rgba(247,207,225,1) 0%, rgba(217,217,217,1) 64%);
+    background: linear-gradient(15deg, rgba(247,207,225,1) 0%, rgba(217,217,217,1) 64%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f7cfe1",endColorstr="#d9d9d9",GradientType=1); 
+}
+
 .home-page .background-image {
     width: 100%;
     height: 100%;
