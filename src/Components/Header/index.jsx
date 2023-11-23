@@ -1,41 +1,47 @@
 import { useState, useEffect } from 'react';
 import './index.css';
-
+import HEADER_LOGO from '../../Assets/Logos/entry_gif.gif';
 import Menu from '../Menu';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(true);
-    const [isHome, setIsHome] = useState();
+    const [isHome, setIsHome] = useState(false);
 
     const updateMenuOpen = () => {
         setMenuOpen(!menuOpen);
     }
 
     useEffect(() => {
-        const homePath = 'https://1st-mgt.vercel.app/'; //change to http://localhost:3000/ when working on dev
-        
-        if (window.location.href === homePath) {
+        const homePath = 'http://localhost:3000/';
+        const secondaryHomePath = 'https://1st-mgt.vercel.app/';
+
+        if (window.location.href === homePath || window.location.href === secondaryHomePath) {
             setIsHome(true);
             setMenuOpen(true);
           } else {
             setIsHome(false);
             setMenuOpen(false);
           }
-          
+
+          console.log(isHome);
     }, []);
 
     return (
         <>
             <header className='header'>
                 <div className='left-column'>
-                    <h1><a href='/'>Logo</a></h1>
-                    {!isHome ? <h1 onClick={updateMenuOpen}>Menu</h1> : null}
+                    <h1>
+                        <a href='/'>
+                            <img src={HEADER_LOGO} />
+                        </a>
+                    </h1>
+                    {!isHome && <h1 onClick={updateMenuOpen}>Menu</h1>}
                 </div>
                 <div className='right-column'>
                     <h1>Search</h1>
                 </div>
             </header>
-            <Menu data={menuOpen} updateMenuOpen={updateMenuOpen}/>
+            <Menu menuOpen={menuOpen} updateMenuOpen={updateMenuOpen}/>
         </>
     )
 }
