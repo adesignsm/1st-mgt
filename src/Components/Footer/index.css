@@ -1,6 +1,6 @@
 footer {
-    height: 60px;
-    position: relative;
+    height: auto;
+    position: absolute;
     bottom: 0;
     width: 100%;
 }
@@ -9,4 +9,7 @@ footer h3 {
     background: -webkit-linear-gradient(#eee, #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    float: right;
+    margin-right: 2rem;
+    font-size: small;
 }
