@@ -1,0 +1,46 @@
+.first-mgt-page {
+    display: flex;
+    padding-top: 10rem;
+}
+
+.first-mgt-page .column-one {
+    padding-left: 13rem;
+}
+
+.first-mgt-page .column-one h1 {
+    font-family: 'Hemi Head';
+    text-transform: uppercase;
+    font-size: 4em;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.first-mgt-page .column-one h2 {
+    font-family: 'Hemi Head';
+    font-weight: lighter;
+    font-size: 1.5em;
+}
+
+.first-mgt-page .column-one .trailing-tags {
+    position: relative;
+    font-family: 'Hemi Head';
+    font-size: 1.5em;
+    margin-top: 3rem;
+}
+
+.first-mgt-page .column-one .trailing-tags span:nth-child(2) {
+    font-weight: lighter;
+}
+
+.first-mgt-page .column-one span {
+    display: flex;
+}
+
+.first-mgt-page .column-two .first-mgt-image {
+    display: flex;
+    justify-content: center;
+}
+
+.first-mgt-page .column-two img {
+    width: 60%;
+}
