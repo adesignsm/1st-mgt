@@ -17,6 +17,10 @@
     backdrop-filter: blur(40px);
 }
 
+#entry-screen img {
+    width: 30%;
+}
+
 .hideEntry {
     margin-top: -5vh !important;
     opacity: 0;
