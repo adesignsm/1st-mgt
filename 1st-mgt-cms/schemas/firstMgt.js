@@ -11,17 +11,17 @@ export default {
             description: 'This is the title for this component. *Note: This is important if you have a lot of components.'
         },
         {
-            name: 'headingText',
-            title: 'Heading Text',
-            type: 'string',
-            description: 'The text for the heading title.'
-        },
-        {
             name: 'leftColumn',
             type: 'object',
             title: 'Left Column Content',
             description: 'Content in this section will populate the left column on the 1st mgt page.',
             fields: [
+                {
+                    name: 'headingText',
+                    title: 'Heading Text',
+                    type: 'string',
+                    description: 'The text for the heading title.'
+                },
                 {
                     name: 'bodyText_EN',
                     type: 'array',
