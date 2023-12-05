@@ -29,8 +29,6 @@ const FirstMgt = () => {
       fetchData();
     }, []);
 
-    console.log(leftColumn)
-
     return (
         <>
             <main className='first-mgt-page'>

@@ -11,6 +11,16 @@ export default {
             description: 'This is the title for this component. *Note: This is important if you have a lot of components.'
         },
         {
+            name: 'toggle',
+            type: 'boolean',
+            title: 'Toggle Pop-Up',
+            description: 'Toggle this switch to enable/disable the pop-up system.',
+            options: {
+                layout: 'switch',
+                label: 'top',
+            }
+        },
+        {
             name: 'popUpEntry',
             type: 'object',
             title: 'Pop-Up Entry Page Content',
