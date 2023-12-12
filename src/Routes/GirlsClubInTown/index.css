@@ -1,0 +1,34 @@
+.girlsclub-intown-page {
+    height: 100%;
+    width: 100vw;
+    margin-top: 15vh;
+    font-family: 'Hemi Head';
+}
+
+.girlsclub-intown-page .title-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: first baseline;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.girlsclub-intown-page .title-row .column-one {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-transform: uppercase;
+    max-width: 600px;
+    width: 60vw;
+}
+
+.girlsclub-intown-page .title-row .column-one h1 {
+    font-size: 4em;
+    margin: 0;
+}
+
+.girlsclub-intown-page .title-row .column-one h2 {
+    font-size: 2em;
+}
