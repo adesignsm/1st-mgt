@@ -31,6 +31,7 @@ const GirlsClubInTown = () => {
     const fetchModelData = async () => {
         try {
             const query = `*[_type == 'girlsClubModels' && defined(modelStats) && defined(modelPictures)] {
+                modelName,
                 modelStats,
                 modelPictures
             }`;
@@ -63,6 +64,19 @@ const GirlsClubInTown = () => {
                             </a>
                         )}
                     </div>
+                </div>
+                <div className='models-grid'>
+                    {models && (
+                        models.map((model, index) => {
+                            console.log(model.modelPictures.intownImage.asset._ref);
+                            return (
+                                <div key={index} className='model-cell'>
+                                    <img className='thumbnail' src={urlFor(model.modelPictures.intownImage.asset._ref).url()} />
+                                    <h2>{model.modelName}</h2>
+                                </div>
+                            )
+                        })
+                    )}
                 </div>
             </main>
         </>
