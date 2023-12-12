@@ -9,6 +9,7 @@ import FirstMgt from './Routes/FirstMgt';
 import News from "./Routes/News";
 import Contact from "./Routes/Contact";
 import ShowPackages from "./Routes/ShowPaclages";
+import GirlsClubInTown from "./Routes/GirlsClubInTown";
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                     <Route path='/news' element={<News />} />
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/show-packages' element={<ShowPackages />} />
+                    <Route path='/girls-club/in-town' element={<GirlsClubInTown />} />
                 </Routes>
             </BrowserRouter>
             <Footer />
