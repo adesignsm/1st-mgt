@@ -32,3 +32,26 @@
 .girlsclub-intown-page .title-row .column-one h2 {
     font-size: 2em;
 }
+
+.girlsclub-intown-page .models-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.girlsclub-intown-page .models-grid .model-cell {
+    max-width: 30%;
+    text-align: center;
+}
+
+.girlsclub-intown-page .models-grid .model-cell img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.girlsclub-intown-page .models-grid .model-cell h2 {
+    width: 100%;
+    text-transform: uppercase;
+}

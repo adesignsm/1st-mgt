@@ -171,6 +171,7 @@ export default {
                             {title: 'BLACK', value: 'black'},
                             {title: 'BROWN', value: 'brown'},
                             {title: 'BLONDE', value: 'blonde'},
+                            {title: 'GINGER', value: 'ginger'},
                         ],
                         layout: 'dropdown',
                     }
