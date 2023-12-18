@@ -11,6 +11,20 @@ export default {
             description: 'Name of the model'
         },
         {
+            name: 'status',
+            type: 'string',
+            title: 'Model Status',
+            description: 'Select the status option from the dropdown below',
+            options: {
+                list: [
+                    {title: 'IN TOWN', value: 'in-town'},
+                    {title: 'OUT OF TOWN', value: 'out-of-town'},
+                    {title: 'UPCOMING', value: 'upcoming'},
+                ],
+                layout: 'dropdown',
+            }
+        },
+        {
             name: 'modelStats',
             type: 'object',
             title: 'Portfolio Stats',
@@ -172,6 +186,7 @@ export default {
                             {title: 'BROWN', value: 'brown'},
                             {title: 'BLONDE', value: 'blonde'},
                             {title: 'GINGER', value: 'ginger'},
+                            {title: 'LIGHT BROWN', value: 'light-brown'},
                         ],
                         layout: 'dropdown',
                     }
@@ -188,6 +203,8 @@ export default {
                             {title: 'BLUE', value: 'blue'},
                             {title: 'GREEN', value: 'green'},
                             {title: 'HAZEL', value: 'hazel'},
+                            {title: 'GREY BLUE', value: 'grey-blue'},
+                            {title: 'BLUE GREEN', value: 'blue-green'},
                         ],
                         layout: 'dropdown',
                     }
