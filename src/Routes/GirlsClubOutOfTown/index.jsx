@@ -4,7 +4,7 @@ import ImageUrlBuilder from '@sanity/image-url';
 
 import './index.css';
 
-const GirlsClubInTown = () => {
+const GirlsClubOutOfTown = () => {
     const [models, setModels] = useState([]);
     const [pageData, setPageData] = useState([]);
 
@@ -16,7 +16,7 @@ const GirlsClubInTown = () => {
 
     const fetchPageData = async () => {
         try {
-            const query = `*[_type == 'girlsClubInTownPage'][0]`;
+            const query = `*[_type == 'girlsClubOutOfTownPage'][0]`;
             const result = await sanityClient.fetch(query);
             setPageData(result);
         } catch (error) {
@@ -30,11 +30,10 @@ const GirlsClubInTown = () => {
   
     const fetchModelData = async () => {
         try {
-            const query = `*[_type == 'girlsClubModels' && defined(modelStats) && defined(modelPictures) && status == 'in-town'] {
+            const query = `*[_type == 'girlsClubModels' && defined(modelStats) && defined(modelPictures) && status == 'out-of-town'] {
                 modelName,
                 modelStats,
-                modelPictures,
-                status
+                modelPictures
             }`;
             const result = await sanityClient.fetch(query);
             setModels(result);
@@ -48,10 +47,11 @@ const GirlsClubInTown = () => {
     }, []);
 
     console.log(models);
+    console.log(pageData);
 
     return (
         <>
-            <main className='girlsclub-intown-page'>
+            <main className='girlsclub-outoftown-page'>
                 <div className='title-row'>
                     <div className='column-one'>
                         <h1>Girls Club</h1>
@@ -68,10 +68,9 @@ const GirlsClubInTown = () => {
                 <div className='models-grid'>
                     {models && (
                         models.map((model, index) => {
-                            console.log(model.modelPictures.intownImage.asset._ref);
                             return (
                                 <div key={index} className='model-cell'>
-                                    <img className='thumbnail' src={urlFor(model.modelPictures.intownImage.asset._ref).url()} />
+                                    <img className='thumbnail' src={urlFor(model.modelPictures.outOfTownImage.asset._ref).url()} />
                                     <h2>{model.modelName}</h2>
                                 </div>
                             )
@@ -83,4 +82,4 @@ const GirlsClubInTown = () => {
     )
 }
 
-export default GirlsClubInTown;
+export default GirlsClubOutOfTown;

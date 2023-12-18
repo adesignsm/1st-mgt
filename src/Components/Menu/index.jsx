@@ -68,7 +68,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                             <ul className='sub-items'>
                                <li><a href='/girls-club/in-town'> In town </a></li>
                                <li>Upcoming</li>
-                               <li>Out of town</li>
+                               <li><a href='/girls-club/out-of-town'>Out of town</a></li>
                             </ul>
                         </li>
                         <li className='main-item-with-dropdown'
