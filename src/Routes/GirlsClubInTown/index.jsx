@@ -65,12 +65,11 @@ const GirlsClubInTown = () => {
                 <div className='models-grid'>
                     {models && (
                         models.map((model, index) => {
-                            console.log(model.modelPictures.intownImage.asset._ref);
                             return (
-                                <div key={index} className='model-cell'>
+                                <a className='model-cell' href={`/girls-club/${model.modelName}`}>
                                     <img className='thumbnail' src={urlFor(model.modelPictures.intownImage.asset._ref).url()} />
                                     <h2>{model.modelName}</h2>
-                                </div>
+                                </a>
                             )
                         })
                     )}

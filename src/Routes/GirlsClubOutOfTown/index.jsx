@@ -66,10 +66,10 @@ const GirlsClubOutOfTown = () => {
                     {models && (
                         models.map((model, index) => {
                             return (
-                                <div key={index} className='model-cell'>
+                                <a className='model-cell' href={`/girls-club/${model.modelName}`}>
                                     <img className='thumbnail' src={urlFor(model.modelPictures.outOfTownImage.asset._ref).url()} />
                                     <h2>{model.modelName}</h2>
-                                </div>
+                                </a>
                             )
                         })
                     )}

@@ -51,8 +51,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -80,8 +80,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -109,8 +109,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -138,8 +138,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -167,8 +167,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -217,7 +217,7 @@ export default {
             name: 'modelPictures',
             type: 'object',
             title: 'Portfolio Media',
-            description: 'These are the individual Stats which will be shown on individual model pages.',
+            description: 'These section covers all the media related to this model.',
             fields: [
                 {
                     name: 'intownImage',
@@ -236,6 +236,18 @@ export default {
                     type: 'image',
                     title: 'Upcoming Thumbnail',
                     description: 'The thumbnail for "Upcoming".'
+                },
+                {
+                    name: 'content',
+                    title: 'Individual Model Media',
+                    type: 'array',
+                    description: 'You can add multiple pieces of media per model in this field. (Please note: the first image in this list will be treated as the cover picture on the individual model page.)',
+                    of: [{
+                        type: 'image',
+                        options: {
+                            hotspot: true
+                        }
+                    }]
                 }
             ]
         },
