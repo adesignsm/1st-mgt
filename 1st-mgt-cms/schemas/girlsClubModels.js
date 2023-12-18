@@ -19,7 +19,7 @@ export default {
                 list: [
                     {title: 'IN TOWN', value: 'in-town'},
                     {title: 'OUT OF TOWN', value: 'out-of-town'},
-                    {title: 'UPCOMING', value: 'upcoming'},
+                    {title: 'UPCOMING', value: 'up-coming'},
                 ],
                 layout: 'dropdown',
             }
@@ -187,6 +187,7 @@ export default {
                             {title: 'BLONDE', value: 'blonde'},
                             {title: 'GINGER', value: 'ginger'},
                             {title: 'LIGHT BROWN', value: 'light-brown'},
+                            {title: 'DARK BROWN', value: 'dark-brown'},
                         ],
                         layout: 'dropdown',
                     }
@@ -205,6 +206,7 @@ export default {
                             {title: 'HAZEL', value: 'hazel'},
                             {title: 'GREY BLUE', value: 'grey-blue'},
                             {title: 'BLUE GREEN', value: 'blue-green'},
+                            {title: 'GREEN GREY', value: 'green-grey'},
                         ],
                         layout: 'dropdown',
                     }
@@ -228,6 +230,12 @@ export default {
                     type: 'image',
                     title: 'Out Of Town Thumbnail',
                     description: 'The thumbnail for "Out Of Town".'
+                },
+                {
+                    name: 'upcomingImage',
+                    type: 'image',
+                    title: 'Upcoming Thumbnail',
+                    description: 'The thumbnail for "Upcoming".'
                 }
             ]
         },

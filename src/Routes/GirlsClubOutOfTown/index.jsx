@@ -46,9 +46,6 @@ const GirlsClubOutOfTown = () => {
       fetchPageData();
     }, []);
 
-    console.log(models);
-    console.log(pageData);
-
     return (
         <>
             <main className='girlsclub-outoftown-page'>

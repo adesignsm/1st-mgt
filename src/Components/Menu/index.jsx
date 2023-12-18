@@ -67,7 +67,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                             </p>
                             <ul className='sub-items'>
                                <li><a href='/girls-club/in-town'> In town </a></li>
-                               <li>Upcoming</li>
+                               <li><a href='/girls-club/up-coming'>Upcoming</a></li>
                                <li><a href='/girls-club/out-of-town'>Out of town</a></li>
                             </ul>
                         </li>
