@@ -10,6 +10,9 @@ import News from "./Routes/News";
 import Contact from "./Routes/Contact";
 import ShowPackages from "./Routes/ShowPaclages";
 import GirlsClubInTown from "./Routes/GirlsClubInTown";
+import GirlsClubOutOfTown from "./Routes/GirlsClubOutOfTown";
+import GirlsClubUpcoming from "./Routes/GirlsClubUpcoming";
+import GirlsClubIndividual from "./Routes/GirlsClubIndividual";
 
 const App = () => {
     return (
@@ -23,6 +26,9 @@ const App = () => {
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/show-packages' element={<ShowPackages />} />
                     <Route path='/girls-club/in-town' element={<GirlsClubInTown />} />
+                    <Route path='/girls-club/out-of-town' element={<GirlsClubOutOfTown />} />
+                    <Route path='/girls-club/up-coming' element={<GirlsClubUpcoming />} />
+                    <Route path='/girls-club/:model' element={<GirlsClubIndividual />} />
                 </Routes>
             </BrowserRouter>
             <Footer />

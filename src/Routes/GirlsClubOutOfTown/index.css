@@ -1,0 +1,57 @@
+.girlsclub-outoftown-page {
+    height: 100%;
+    width: 100vw;
+    margin-top: 15vh;
+    font-family: 'Hemi Head';
+}
+
+.girlsclub-outoftown-page .title-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: first baseline;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.girlsclub-outoftown-page .title-row .column-one {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-transform: uppercase;
+    max-width: 600px;
+    width: 60vw;
+}
+
+.girlsclub-outoftown-page .title-row .column-one h1 {
+    font-size: 4em;
+    margin: 0;
+}
+
+.girlsclub-outoftown-page .title-row .column-one h2 {
+    font-size: 2em;
+}
+
+.girlsclub-outoftown-page .models-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.girlsclub-outoftown-page .models-grid .model-cell {
+    max-width: 30%;
+    text-align: center;
+}
+
+.girlsclub-outoftown-page .models-grid .model-cell img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.girlsclub-outoftown-page .models-grid .model-cell h2 {
+    width: 100%;
+    text-transform: uppercase;
+}

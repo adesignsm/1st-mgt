@@ -11,6 +11,20 @@ export default {
             description: 'Name of the model'
         },
         {
+            name: 'status',
+            type: 'string',
+            title: 'Model Status',
+            description: 'Select the status option from the dropdown below',
+            options: {
+                list: [
+                    {title: 'IN TOWN', value: 'in-town'},
+                    {title: 'OUT OF TOWN', value: 'out-of-town'},
+                    {title: 'UPCOMING', value: 'up-coming'},
+                ],
+                layout: 'dropdown',
+            }
+        },
+        {
             name: 'modelStats',
             type: 'object',
             title: 'Portfolio Stats',
@@ -37,8 +51,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -66,8 +80,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -95,8 +109,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -124,8 +138,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -153,8 +167,8 @@ export default {
                                 list: [
                                     {title: 'CM', value: 'cm'},
                                     {title: 'FT', value: 'ft'},
-                                    {title: 'INCHES', value: 'inches'},
-                                    {title: 'MM', value: 'millimeters'},
+                                    {title: 'INCHES', value: '"'},
+                                    {title: 'MM', value: 'mm'},
                                 ],
                                 layout: 'dropdown',
                             }
@@ -172,6 +186,8 @@ export default {
                             {title: 'BROWN', value: 'brown'},
                             {title: 'BLONDE', value: 'blonde'},
                             {title: 'GINGER', value: 'ginger'},
+                            {title: 'LIGHT BROWN', value: 'light-brown'},
+                            {title: 'DARK BROWN', value: 'dark-brown'},
                         ],
                         layout: 'dropdown',
                     }
@@ -188,6 +204,9 @@ export default {
                             {title: 'BLUE', value: 'blue'},
                             {title: 'GREEN', value: 'green'},
                             {title: 'HAZEL', value: 'hazel'},
+                            {title: 'GREY BLUE', value: 'grey-blue'},
+                            {title: 'BLUE GREEN', value: 'blue-green'},
+                            {title: 'GREEN GREY', value: 'green-grey'},
                         ],
                         layout: 'dropdown',
                     }
@@ -198,7 +217,7 @@ export default {
             name: 'modelPictures',
             type: 'object',
             title: 'Portfolio Media',
-            description: 'These are the individual Stats which will be shown on individual model pages.',
+            description: 'These section covers all the media related to this model.',
             fields: [
                 {
                     name: 'intownImage',
@@ -211,6 +230,24 @@ export default {
                     type: 'image',
                     title: 'Out Of Town Thumbnail',
                     description: 'The thumbnail for "Out Of Town".'
+                },
+                {
+                    name: 'upcomingImage',
+                    type: 'image',
+                    title: 'Upcoming Thumbnail',
+                    description: 'The thumbnail for "Upcoming".'
+                },
+                {
+                    name: 'content',
+                    title: 'Individual Model Media',
+                    type: 'array',
+                    description: 'You can add multiple pieces of media per model in this field. (Please note: the first image in this list will be treated as the cover picture on the individual model page.)',
+                    of: [{
+                        type: 'image',
+                        options: {
+                            hotspot: true
+                        }
+                    }]
                 }
             ]
         },
