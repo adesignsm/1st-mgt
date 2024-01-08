@@ -4,12 +4,14 @@ import sanityClient from '../../client';
 import ImageUrlBuilder from '@sanity/image-url';
 
 import './index.css';
+import LightBox from "../../Components/LightBox";
 
 const GirlsClubIndividual = () => {
     const [urlSuffix, setUrlSuffix] = useState('');
     const [modelData, setModelData] = useState([]);
     const [modelStats, setModelStats] = useState([]);
     const [modelContent, setModelContent] = useState([]);
+    const [imageIndex, setImageIndex] = useState(null);
 
     const builder = ImageUrlBuilder(sanityClient);
 
@@ -32,9 +34,11 @@ const GirlsClubIndividual = () => {
                 modelName,
                 modelStats,
                 modelPictures,
+                modelLightbox,
             }`;
             const result = await sanityClient.fetch(query);
             const matchingModel = result.find((model) => urlSuffix.includes(model.modelName));
+
             if (matchingModel) {
                 setModelData(matchingModel);
                 setModelStats(matchingModel.modelStats);
@@ -52,7 +56,10 @@ const GirlsClubIndividual = () => {
         }
     }, [urlSuffix]);
 
-    console.log(modelContent)
+    const handleImageClick = (e) => {
+        setImageIndex(parseInt(e.target.dataset.value));
+        document.getElementById('lightbox').style.display = 'flex';
+    }
 
     return (
         <>
@@ -123,15 +130,21 @@ const GirlsClubIndividual = () => {
                     <h1>{modelData.modelName}</h1>
                     <div className="collage">
                         {Object.keys(modelContent).length > 0 && (
-                            Object.keys(modelContent).map((content) => {
+                            Object.keys(modelContent).map((content, index) => {
                                 return (
-                                    <img src={urlFor(modelContent[content].asset._ref).url()} />
+                                    <img 
+                                        key={index} 
+                                        src={urlFor(modelContent[content].asset._ref).url()} 
+                                        onClick={(e) => handleImageClick(e)}
+                                        data-value={index}
+                                    />
                                 )
                             })
                         )}
                     </div>
                 </div>
             </main>
+            <LightBox data={[modelContent, imageIndex]} />
         </>
     )
 }
