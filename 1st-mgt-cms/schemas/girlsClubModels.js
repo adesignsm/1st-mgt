@@ -207,6 +207,7 @@ export default {
                             {title: 'GREY BLUE', value: 'grey-blue'},
                             {title: 'BLUE GREEN', value: 'blue-green'},
                             {title: 'GREEN GREY', value: 'green-grey'},
+                            {title: 'DARK BROWN', value: 'dark-brown'},
                         ],
                         layout: 'dropdown',
                     }
