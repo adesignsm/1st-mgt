@@ -17,6 +17,7 @@ import GirlsClubIndividual from "./Routes/GirlsClubIndividual";
 
 import BoysSquadInTown from "./Routes/BoysSquadInTown";
 import BoysSquadOutOfTown from "./Routes/BoysSquadOutOfTown";
+import BoysSquadUpcoming from "./Routes/BoysSquadUpcoming";
 
 const App = () => {
     return (
@@ -35,6 +36,7 @@ const App = () => {
                     <Route path='/girls-club/:model' element={<GirlsClubIndividual />} />
                     <Route path='/boys-squad/in-town' element={<BoysSquadInTown />} />
                     <Route path='/boys-squad/out-of-town' element={<BoysSquadOutOfTown />} />
+                    <Route path='/boys-squad/up-coming' element={<BoysSquadUpcoming />} />
                 </Routes>
             </BrowserRouter>
             <Footer />
