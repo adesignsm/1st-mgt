@@ -1,8 +1,8 @@
 export default {
-    name: 'girlsClubInTownPage',
+    name: 'girlsClubInTown',
     title: 'GirlsClub - In Town Page',
     type: 'document',
-    description: 'GirlsClub - In Town Page Configuration.',
+    description: 'GirlsClub - In Town Configuration.',
     fields: [
         {
             name: 'sliceTitle',
