@@ -14,6 +14,7 @@ import girlsClubOutOfTown from "./girlsClubOutOfTown"
 import girlsClubUpcoming from "./girlsClubUpcoming"
 import boysSquadInTown from "./boysSquadInTown"
 import boysSquadOutOfTown from "./boysSquadOutOfTown"
+import boysSquadUpComing from "./boysSquadUpComing"
 
 export const schemaTypes = [
     popUp,
@@ -25,5 +26,6 @@ export const schemaTypes = [
 
     boysSquadModels,
     boysSquadInTown,
-    boysSquadOutOfTown
+    boysSquadOutOfTown,
+    boysSquadUpComing,
 ]
