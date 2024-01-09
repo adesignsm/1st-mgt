@@ -68,7 +68,7 @@ const BoysSquadUpcoming = () => {
                     {models && (
                         models.map((model, index) => {
                             return (
-                                <a className='model-cell' href={`/girls-club/${model.modelName}`}>
+                                <a className='model-cell' href={`/boys-squad/${model.modelName}`}>
                                     <img className='thumbnail' src={urlFor(model.modelPictures.upcomingImage.asset._ref).url()} />
                                     <h2>{model.modelName}</h2>
                                 </a>
