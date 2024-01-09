@@ -65,6 +65,14 @@
 
 .girlsclub-individual-page .model-collage .collage img {
     min-width: 30%;
-    width: 200px;
+    width: 400px;
     object-fit: contain;
+    cursor: pointer;
+}
+
+.girlsclub-individual-page .model-collage .collage video {
+    min-width: 30%;
+    width: 500px;
+    object-fit: contain;
+    cursor: pointer;
 }

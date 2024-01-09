@@ -10,7 +10,8 @@ const GirlsClubIndividual = () => {
     const [urlSuffix, setUrlSuffix] = useState('');
     const [modelData, setModelData] = useState([]);
     const [modelStats, setModelStats] = useState([]);
-    const [modelContent, setModelContent] = useState([]);
+    const [modelImageContent, setModelImageContent] = useState([]);
+    const [modelFileContent, setModelFileContent] = useState([]);
     const [imageIndex, setImageIndex] = useState(null);
 
     const builder = ImageUrlBuilder(sanityClient);
@@ -42,7 +43,10 @@ const GirlsClubIndividual = () => {
             if (matchingModel) {
                 setModelData(matchingModel);
                 setModelStats(matchingModel.modelStats);
-                setModelContent(matchingModel.modelPictures.content);
+                const imageContent = matchingModel.modelPictures.content.filter((item) => item._type === 'image');
+                const videoContent = matchingModel.modelPictures.content.filter((item) => item._type === 'file');
+                setModelImageContent(imageContent);
+                setModelFileContent(videoContent);
             }
 
         } catch (error) {
@@ -59,6 +63,19 @@ const GirlsClubIndividual = () => {
     const handleImageClick = (e) => {
         setImageIndex(parseInt(e.target.dataset.value));
         document.getElementById('lightbox').style.display = 'flex';
+    }
+    
+    const videoConversion = (source) => {
+        const assetRef = source.asset._ref;
+        const withoutFilePrefix = assetRef.replace('file-', '');
+        const modifiedAssetRef = withoutFilePrefix.replace(/-(?=[^-]*$)/, '.');
+        const mutatedRef = 'https://cdn.sanity.io/files/gvoh9rir/production/' + modifiedAssetRef;
+
+        return (
+            <video className='lightbox-video' controls autoPlay={false}>
+                <source src={mutatedRef} type="video/mp4" />
+            </video>
+        );
     }
 
     return (
@@ -121,30 +138,36 @@ const GirlsClubIndividual = () => {
                         )}
                     </div>
                     <div className="right-column">
-                        {Object.keys(modelContent).length > 0 && (
-                            <img className="hero-image" src={urlFor(modelContent[0].asset._ref).url()} />
+                        {Object.keys(modelImageContent).length > 0 && (
+                            <img className="hero-image" src={urlFor(modelImageContent[0].asset._ref).url()} />
                         )}
                     </div>
                 </div>
                 <div className="model-collage">
                     <h1>{modelData.modelName}</h1>
                     <div className="collage">
-                        {Object.keys(modelContent).length > 0 && (
-                            Object.keys(modelContent).map((content, index) => {
-                                return (
-                                    <img 
-                                        key={index} 
-                                        src={urlFor(modelContent[content].asset._ref).url()} 
-                                        onClick={(e) => handleImageClick(e)}
-                                        data-value={index}
-                                    />
-                                )
+                        {(Object.keys(modelImageContent).length > 0 || Object.keys(modelFileContent).length > 0) && (
+                            [...Object.values(modelImageContent), ...Object.values(modelFileContent)].map((content, index) => {
+                            return (
+                                <div key={index}>
+                                    {content._type === 'image' && (
+                                        <img 
+                                            src={urlFor(content.asset._ref).url()} 
+                                            onClick={(e) => handleImageClick(e)}
+                                            data-value={index}
+                                        />
+                                    )}
+                                    {content._type === 'file' && (
+                                        videoConversion(content)
+                                    )}
+                                </div>
+                            );
                             })
                         )}
-                    </div>
+                        </div>
                 </div>
             </main>
-            <LightBox data={[modelContent, imageIndex]} />
+            <LightBox data={[modelImageContent, modelFileContent, imageIndex]} />
         </>
     )
 }

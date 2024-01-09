@@ -243,12 +243,18 @@ export default {
                     title: 'Individual Model Media',
                     type: 'array',
                     description: 'You can add multiple pieces of media per model in this field. (Please note: the first image in this list will be treated as the cover picture on the individual model page.)',
-                    of: [{
-                        type: 'image',
-                        options: {
-                            hotspot: true
+                    of: [
+                        {
+                            type: 'image',
+                            options: {
+                                hotspot: true
+                            }
+                        },
+                        {
+                            type: 'file',
+                            title: 'Video'
                         }
-                    }]
+                    ]
                 }
             ]
         },
