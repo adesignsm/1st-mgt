@@ -1,8 +1,8 @@
 export default {
-    name: 'girlsClubInTownPage',
-    title: 'GirlsClub - In Town Page',
+    name: 'boysSquadOutOfTownPage',
+    title: 'BoysSquad - Out Of Town Page',
     type: 'document',
-    description: 'GirlsClub - In Town Page Configuration.',
+    description: 'BoysSquad - Out Of Town Page Configuration.',
     fields: [
         {
             name: 'sliceTitle',
@@ -13,7 +13,7 @@ export default {
         {
             name: 'subTitle',
             type: 'string',
-            title: 'Sub Title for In Town',
+            title: 'Sub Title for Out Of Town',
             description: 'Sub Title that will display to the right side of the Heading.'
         },
         {

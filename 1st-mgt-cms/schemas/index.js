@@ -9,19 +9,21 @@ import girlsClubModels from "./girlsClubModels"
 import boysSquadModels from "./boysSquadModels"
 
 /*model routes */
-import girlsClubInTownPage from "./girlsClubInTownPage"
+import girlsClubInTown from "./girlsClubInTown"
 import girlsClubOutOfTown from "./girlsClubOutOfTown"
 import girlsClubUpcoming from "./girlsClubUpcoming"
-import boysSquadInTownPage from "./boysSquadInTownPage"
+import boysSquadInTown from "./boysSquadInTown"
+import boysSquadOutOfTown from "./boysSquadOutOfTown"
 
 export const schemaTypes = [
     popUp,
     firstMgt,
     girlsClubModels,
-    girlsClubInTownPage,
+    girlsClubInTown,
     girlsClubOutOfTown,
     girlsClubUpcoming,
 
     boysSquadModels,
-    boysSquadInTownPage,
+    boysSquadInTown,
+    boysSquadOutOfTown
 ]
