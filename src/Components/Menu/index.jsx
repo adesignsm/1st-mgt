@@ -82,7 +82,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                             <ul className='sub-items'>
                                <li><a href='/boys-squad/in-town'> In town </a></li>
                                <li>Upcoming</li>
-                               <li>Out of town</li> 
+                               <li><a href='/boys-squad/out-of-town'>Out of town</a></li> 
                             </ul>
                         </li>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>
