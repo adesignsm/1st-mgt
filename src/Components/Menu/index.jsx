@@ -80,7 +80,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                         >
                             <p className='main-navigation-item'>boys squad</p>
                             <ul className='sub-items'>
-                               <li>In town</li>
+                               <li><a href='/boys-squad/in-town'> In town </a></li>
                                <li>Upcoming</li>
                                <li>Out of town</li> 
                             </ul>
