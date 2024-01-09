@@ -6,11 +6,13 @@ import firstMgt from "./firstMgt"
 
 /*model schemas */
 import girlsClubModels from "./girlsClubModels"
+import boysSquadModels from "./boysSquadModels"
 
 /*model routes */
 import girlsClubInTownPage from "./girlsClubInTownPage"
 import girlsClubOutOfTown from "./girlsClubOutOfTown"
 import girlsClubUpcoming from "./girlsClubUpcoming"
+import boysSquadInTownPage from "./boysSquadInTownPage"
 
 export const schemaTypes = [
     popUp,
@@ -19,4 +21,7 @@ export const schemaTypes = [
     girlsClubInTownPage,
     girlsClubOutOfTown,
     girlsClubUpcoming,
+
+    boysSquadModels,
+    boysSquadInTownPage,
 ]
