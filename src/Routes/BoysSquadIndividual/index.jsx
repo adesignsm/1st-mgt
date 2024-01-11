@@ -6,7 +6,7 @@ import ImageUrlBuilder from '@sanity/image-url';
 import './index.css';
 import LightBox from "../../Components/LightBox";
 
-const GirlsClubIndividual = () => {
+const BoysSquadIndividual = () => {
     const [urlSuffix, setUrlSuffix] = useState('');
     const [modelData, setModelData] = useState([]);
     const [modelStats, setModelStats] = useState([]);
@@ -31,7 +31,7 @@ const GirlsClubIndividual = () => {
 
     const fetchModelData = async () => {
         try {
-            const query = `*[_type == 'girlsClubModels' && defined(modelStats) && defined(modelPictures)] {
+            const query = `*[_type == 'boysSquadModels' && defined(modelStats) && defined(modelPictures)] {
                 modelName,
                 modelStats,
                 modelPictures,
@@ -80,7 +80,7 @@ const GirlsClubIndividual = () => {
 
     return (
         <>
-            <main className="girlsclub-individual-page">
+            <main className="boysSquad-individual-page">
                 <div className="hero">
                     <div className="left-column">
                         {modelData && (
@@ -94,11 +94,11 @@ const GirlsClubIndividual = () => {
                                                 {modelStats.height.unit}
                                             </li>
                                             <li>
-                                                bust {modelStats.bust.initialMeasurement}
-                                                {modelStats.bust.unit === 'cm' ? 'cm' : 
-                                                 modelStats.bust.unit === 'ft' ? 'ft' : 
-                                                 modelStats.bust.unit === '"' ? '"' :
-                                                 modelStats.bust.unoutoftownwaiit === 'mm' ? 'mm' : 'Unknown'
+                                                chest {modelStats.chest.initialMeasurement}
+                                                {modelStats.chest.unit === 'cm' ? 'cm' : 
+                                                 modelStats.chest.unit === 'ft' ? 'ft' : 
+                                                 modelStats.chest.unit === '"' ? '"' :
+                                                 modelStats.chest.unoutoftownwaiit === 'MM' ? 'mm' : 'Unknown'
                                                 }
                                             </li>
                                             <li>
@@ -172,4 +172,4 @@ const GirlsClubIndividual = () => {
     )
 }
 
-export default GirlsClubIndividual;
+export default BoysSquadIndividual;

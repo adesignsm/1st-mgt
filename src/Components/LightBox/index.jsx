@@ -18,20 +18,29 @@ const LightBox = ({data}) => {
 
     const handleLeftArrowClick = () => {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + data[0].length) % data[0].length);
-        document.querySelector('.lightbox-video').currentTime = 0;
-        document.querySelector('.lightbox-video').pause();
+
+        if (document.querySelector('.lightbox-video')) {
+            document.querySelector('.lightbox-video').currentTime = 0;
+            document.querySelector('.lightbox-video').pause();
+        } 
     };
 
     const handleRightArrowClick = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % data[0].length);
-        document.querySelector('.lightbox-video').currentTime = 0;
-        document.querySelector('.lightbox-video').pause();
+
+        if (document.querySelector('.lightbox-video')) {
+            document.querySelector('.lightbox-video').currentTime = 0;
+            document.querySelector('.lightbox-video').pause();
+        } 
     }
 
     const handleCloseClick = () => {
         document.getElementById('lightbox').style.display = 'none';
-        document.querySelector('.lightbox-video').currentTime = 0;
-        document.querySelector('.lightbox-video').pause();
+        
+        if (document.querySelector('.lightbox-video')) {
+            document.querySelector('.lightbox-video').currentTime = 0;
+            document.querySelector('.lightbox-video').pause();
+        } 
     }
 
     const videoConversion = (source) => {
@@ -50,6 +59,8 @@ const LightBox = ({data}) => {
     useEffect(() => {
         setCurrentIndex(data[2]);
     }, [data[2]]);
+
+    console.log(data);
 
     return (
         <>
