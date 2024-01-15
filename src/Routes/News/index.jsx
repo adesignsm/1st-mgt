@@ -4,6 +4,7 @@ import ImageUrlBuilder from '@sanity/image-url';
 import 'jquery-ui-bundle';
 import $ from 'jquery';
 
+import LightBox from '../../Components/LightBox';
 import './index.css';
 
 const News = () => {
@@ -11,6 +12,7 @@ const News = () => {
     const [postTitle, setPostTitle] = useState('');
     const [postDetails, setPostDetails] = useState([]);
     const [postMedia, setPostMedia] = useState([]);
+    const [imageIndex, setImageIndex] = useState(null);
     const [showViewAll, setShowViewAll] = useState(false);
 
     const builder = ImageUrlBuilder(sanityClient);
@@ -45,6 +47,11 @@ const News = () => {
         setShowViewAll(false);
     }
 
+    const handleImageClick = (e) => {
+        setImageIndex(parseInt(e.target.dataset.value));
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+
     const videoConversion = (source) => {
         const assetRef = source.asset._ref;
         const withoutFilePrefix = assetRef.replace('file-', '');
@@ -62,7 +69,6 @@ const News = () => {
         fetchData();
 
         $(".right-column").draggable({disabled: true});
-
         $("#post-gallery").draggable({
             axis: "x",
             opacity: "0.95",
@@ -84,6 +90,16 @@ const News = () => {
             },
           });
     }, []);
+
+    useEffect(() => {
+        postData.forEach((post) => {
+            if (post.hasOwnProperty('postMedia') && post.hasOwnProperty('postDetails')) {
+                setPostTitle(post.postTitle)
+                setPostDetails(post.postDetails)
+                setPostMedia(post.postMedia)
+            }
+        })
+    }, [postData]);
 
     return (
         <>
@@ -121,6 +137,8 @@ const News = () => {
                                         <img 
                                             key={index} 
                                             src={urlFor(media.asset._ref).url()} 
+                                            onClick={(e) => handleImageClick(e)}
+                                            data-value={index}
                                         />
                                     )
                                 } else if (media._type === 'file') {
@@ -133,6 +151,7 @@ const News = () => {
                     </div>
                 </div>
             </main>
+            {postMedia.length > 0 && <LightBox data={[postMedia, imageIndex]} />}
         </>
     )
 }
