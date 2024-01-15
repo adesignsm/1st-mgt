@@ -35,7 +35,6 @@ const GirlsClubIndividual = () => {
                 modelName,
                 modelStats,
                 modelPictures,
-                modelLightbox,
             }`;
             const result = await sanityClient.fetch(query);
             const matchingModel = result.find((model) => urlSuffix.includes(model.modelName));
@@ -43,16 +42,15 @@ const GirlsClubIndividual = () => {
             if (matchingModel) {
                 setModelData(matchingModel);
                 setModelStats(matchingModel.modelStats);
-                const imageContent = matchingModel.modelPictures.content.filter((item) => item._type === 'image');
-                const videoContent = matchingModel.modelPictures.content.filter((item) => item._type === 'file');
-                setModelImageContent(imageContent);
-                setModelFileContent(videoContent);
+                setModelImageContent(matchingModel.modelPictures.content);
             }
 
         } catch (error) {
             console.error(error);
         }
     };
+
+    console.log(modelImageContent)
   
     useEffect(() => {
         if (urlSuffix) {
@@ -146,22 +144,22 @@ const GirlsClubIndividual = () => {
                 <div className="model-collage">
                     <h1>{modelData.modelName}</h1>
                     <div className="collage">
-                        {(Object.keys(modelImageContent).length > 0 || Object.keys(modelFileContent).length > 0) && (
-                            [...Object.values(modelImageContent), ...Object.values(modelFileContent)].map((content, index) => {
-                            return (
-                                <div key={index}>
-                                    {content._type === 'image' && (
-                                        <img 
-                                            src={urlFor(content.asset._ref).url()} 
-                                            onClick={(e) => handleImageClick(e)}
-                                            data-value={index}
-                                        />
-                                    )}
-                                    {content._type === 'file' && (
-                                        videoConversion(content)
-                                    )}
-                                </div>
-                            );
+                        {(Object.keys(modelImageContent).length > 0) && (
+                            Object.values(modelImageContent).map((content, index) => {
+                                return (
+                                    <div key={index}>
+                                        {content._type === 'image' && (
+                                            <img 
+                                                src={urlFor(content.asset._ref).url()} 
+                                                onClick={(e) => handleImageClick(e)}
+                                                data-value={index}
+                                            />
+                                        )}
+                                        {content._type === 'file' && (
+                                            videoConversion(content)
+                                        )}
+                                    </div>
+                                );
                             })
                         )}
                         </div>

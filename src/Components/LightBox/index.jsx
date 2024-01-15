@@ -9,7 +9,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import './index.css';
 
 const LightBox = ({data}) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(null);
 
     const builder = ImageUrlBuilder(sanityClient);
     const urlFor = (source) => {
@@ -57,10 +57,12 @@ const LightBox = ({data}) => {
     }
 
     useEffect(() => {
-        setCurrentIndex(data[2]);
-    }, [data[2]]);
-
-    console.log(data);
+        if (data.length === 3) {
+            setCurrentIndex(data[2]);
+        } else {
+            setCurrentIndex(data[1]);
+        }
+    }, [data[data.length === 3 ? 2 : 1]]);
 
     return (
         <>
@@ -69,17 +71,32 @@ const LightBox = ({data}) => {
                 <div className='left-column'>
                     <MdArrowBackIosNew onClick={handleLeftArrowClick} />
                 </div>
-                {[data[0], data[1]].map((dataArray, dataIndex) => (
-                    dataArray.map((item, index) => (
-                        <div key={index} className={`slide ${index === currentIndex ? 'active' : ''}`}>
-                            {item._type === 'image' ? (
-                                <img src={urlFor(item.asset._ref).url()} alt={`Slide ${index}`} />
-                            ) : (
-                               videoConversion(item)
-                            )}
-                        </div>
+                {data.length === 3 && data[0] && data[1] && (
+                    [data[0], data[1]].map((dataArray, dataIndex) => (
+                        dataArray.map((item, index) => (
+                            <div key={index} className={`slide ${index === currentIndex ? 'active' : ''}`}>
+                                {item._type === 'image' ? (
+                                    <img src={urlFor(item.asset._ref).url()} alt={`Slide ${index}`} />
+                                ) : (
+                                   videoConversion(item)
+                                )}
+                            </div>
+                        ))
                     ))
-                ))}
+                )}
+                {data.length === 2 && (
+                    data[0].map((item, index) => {
+                        return (
+                            <div key={index} className={`slide ${index === currentIndex ? 'active' : ''}`}>
+                                {item._type === 'image' ? (
+                                    <img src={urlFor(item.asset._ref).url()} alt={`Slide ${index}`} />
+                                ) : (
+                                    videoConversion(item)
+                                )}
+                            </div>
+                        )
+                    })
+                )}
                 <div className='right-column'>
                     <MdArrowForwardIos onClick={handleRightArrowClick} />
                 </div>
