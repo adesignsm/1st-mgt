@@ -173,6 +173,33 @@ export default {
                     }
                 }
             ]
+        },
+        {
+          name: 'additionalInfo',
+          type: 'array',
+          description: 'Additional information can be added here. This block is displayed below the contact information.',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  name: 'enText',
+                  title: 'English Text',
+                  type: 'array',
+                  of: [{ type: 'block'}]
+                },
+                {
+                  name: 'krText',
+                  title: 'Korean Text',
+                  type: 'array',
+                  of: [{ type: 'block'}]
+                },
+              ]
+            }
+          ],
+          options: {
+            layout: 'default'
+          }
         }
     ]
 }
