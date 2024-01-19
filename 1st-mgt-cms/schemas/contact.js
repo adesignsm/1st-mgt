@@ -16,9 +16,26 @@ export default {
             type: 'object',
             fields: [
                 {
-                    name: 'title',
-                    description: 'The title for the "General Inquiry" block',
-                    type: 'string'
+                  name: 'title',
+                  description: 'The title for the "General Inquiry" block',
+                  type: 'array',
+                  of: [
+                    {
+                      type: 'object',
+                      fields: [
+                        {
+                          name: 'titleEn',
+                          type: 'string',
+                          title: 'English Title'
+                        },
+                        {
+                          name: 'titleKr',
+                          type: 'string',
+                          title: 'Korean Title'
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                     name: 'emails',
@@ -56,7 +73,24 @@ export default {
                 {
                     name: 'title',
                     description: 'The title for the "Placement Inquiry" block',
-                    type: 'string'
+                    type: 'array',
+                    of: [
+                      {
+                        type: 'object',
+                        fields: [
+                          {
+                            name: 'titleEn',
+                            type: 'string',
+                            title: 'English Title'
+                          },
+                          {
+                            name: 'titleKr',
+                            type: 'string',
+                            title: 'Korean Title'
+                          }
+                        ]
+                      }
+                    ]
                 },
                 {
                     name: 'emails',
@@ -92,9 +126,26 @@ export default {
             type: 'object',
             fields: [
                 {
-                    name: 'title',
-                    description: 'The title for the "Creative/PR Inquiry" block',
-                    type: 'string'
+                  name: 'title',
+                  description: 'The title for the "Creative/PR Inquiry" block',
+                  type: 'array',
+                  of: [
+                    {
+                      type: 'object',
+                      fields: [
+                        {
+                          name: 'titleEn',
+                          type: 'string',
+                          title: 'English Title'
+                        },
+                        {
+                          name: 'titleKr',
+                          type: 'string',
+                          title: 'Korean Title'
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                     name: 'emails',
@@ -122,6 +173,33 @@ export default {
                     }
                 }
             ]
+        },
+        {
+          name: 'additionalInfo',
+          type: 'array',
+          description: 'Additional information can be added here. This block is displayed below the contact information.',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  name: 'enText',
+                  title: 'English Text',
+                  type: 'array',
+                  of: [{ type: 'block'}]
+                },
+                {
+                  name: 'krText',
+                  title: 'Korean Text',
+                  type: 'array',
+                  of: [{ type: 'block'}]
+                },
+              ]
+            }
+          ],
+          options: {
+            layout: 'default'
+          }
         }
     ]
 }

@@ -1,0 +1,60 @@
+.contact-page {
+    height: 100%;
+    width: 100%;
+    padding-left: 5rem;
+    margin-top: 15vh;
+}
+
+.contact-page h1 {
+    font-family: 'Hemi Head';
+    text-transform: uppercase;
+    font-size: 4em;
+}
+
+.emails-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.emails-container .general-inquiry-container,
+.emails-container .placement-inquiry-container,
+.emails-container .creativepr-inquiry-container {
+    display: flex;
+    gap: 50px;
+    border-bottom: 1px solid #000;
+    width: fit-content;
+}
+
+.emails-container .container ul {
+    min-width: 200px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.emails-container .container ul > li {
+    margin-bottom: 0.5rem;
+}
+
+.emails-container .container .contact-title li:first-child {
+    font-family: 'Hemi Head';
+    text-transform: uppercase;
+}
+
+.emails-container .container .contact-type {
+    font-family: 'Hemi Head';
+    text-transform: uppercase;
+}
+
+.emails-container .container .contact-emails {
+    font-family: 'Hemi Head';
+}
+
+.additional-info-container {
+    margin-top: 10rem;
+}
+
+.additional-info-container h4 {
+    font-family: 'Hemi Head';
+}
+  
