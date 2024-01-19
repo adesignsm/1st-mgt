@@ -4,6 +4,7 @@ import newsPosts from "./newsPosts"
 
 /*main routes */
 import firstMgt from "./firstMgt"
+import contact from "./contact"
 
 /*model schemas */
 import girlsClubModels from "./girlsClubModels"
@@ -21,6 +22,7 @@ export const schemaTypes = [
     popUp,
     firstMgt,
     newsPosts,
+    contact,
     girlsClubModels,
     girlsClubInTown,
     girlsClubOutOfTown,
