@@ -47,9 +47,14 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
         }
     }
 
+    console.log(isHome)
+
     return (
         <>
-            <nav className={`navigation ${menuOpen ? 'showMenu' : 'hideMenu'}`}>
+            <nav className={`navigation 
+                ${menuOpen ? 'showMenu' : 'hideMenu'}
+                ${isHome ? 'transparent' : 'gradient'}
+            `}>
                 <div className='left-column'>
                     <ul className='main-navigation'>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>

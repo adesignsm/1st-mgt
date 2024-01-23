@@ -13,7 +13,6 @@ const PopUpEntry = () => {
           const query = `*[_type == 'popUp'][0]`;
           const result = await sanityClient.fetch(query);
           setPopUpEntryData(result);
-          console.log(result);
         } catch (error) {
           console.error(error);
         }
