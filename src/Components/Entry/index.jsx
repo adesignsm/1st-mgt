@@ -14,10 +14,14 @@ const Entry = () => {
         }, 3000);
     }, [hideEntry]);
 
+    const handleClick = () => {
+        setHideEntry(true);
+    }
+
     return (
         <>
             <div id='entry-screen' className={hideEntry ? 'hideEntry' : null}>
-                <img src={ENTRY_GIF} />
+                <img src={ENTRY_GIF} onClick={handleClick} />
             </div>
             {hideEntry && <PopUpEntry />}
         </>

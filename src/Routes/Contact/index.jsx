@@ -9,6 +9,7 @@ const Contact = () => {
     const [placementData, setPlacementData] = useState([]);
     const [creativePrData, setCreativePrData] = useState([]);
     const [additionalData, setAdditionalData] = useState([]);
+    const [mapData, setMapData] = useState([]);
 
     const fetchData = async () => {
         try {
@@ -30,8 +31,11 @@ const Contact = () => {
             setPlacementData(data[0].placementContact);
             setCreativePrData(data[0].creativeAndPrContact);
             setAdditionalData(data[0].additionalInfo[0]);
+            setMapData(data[0].mapSection);
         }
     }, [data]);
+
+    // console.log(mapData)
 
     return (
         <>
@@ -45,7 +49,7 @@ const Contact = () => {
                                     return (
                                         <>
                                             <li>{data.titleEn}</li>
-                                            <li>{data.titleKr}</li>
+                                            <li className='kr'>{data.titleKr}</li>
                                         </>
                                     )
                                 })
@@ -57,7 +61,7 @@ const Contact = () => {
                                     if (email.emailType) {
                                         return (
                                             <>
-                                                <li>{email.emailType} - </li>
+                                                <li>{email.emailType}</li>
                                             </>
                                         )
                                     }
@@ -71,7 +75,11 @@ const Contact = () => {
                                 generalData.emails.map((email) => {
                                     return (
                                         <>
-                                            <li>{email.emailAddress}</li>
+                                            <li>
+                                                <a href={`mailto:${email.emailAddress}`}>
+                                                    {email.emailAddress}
+                                                </a>
+                                            </li>
                                         </>
                                     )
                                 })
@@ -85,7 +93,7 @@ const Contact = () => {
                                     return (
                                         <>
                                             <li>{data.titleEn}</li>
-                                            <li>{data.titleKr}</li>
+                                            <li className='kr'>{data.titleKr}</li>
                                         </>
                                     )
                                 })
@@ -97,7 +105,7 @@ const Contact = () => {
                                     if (email.emailType) {
                                         return (
                                             <>
-                                                <li>{email.emailType} - </li>
+                                                <li>{email.emailType}</li>
                                             </>
                                         )
                                     }
@@ -111,7 +119,11 @@ const Contact = () => {
                                 placementData.emails.map((email) => {
                                     return (
                                         <>
-                                            <li>{email.emailAddress}</li>
+                                            <li>
+                                                <a href={`mailto:${email.emailAddress}`}>
+                                                    {email.emailAddress}
+                                                </a>
+                                            </li>
                                         </>
                                     )
                                 })
@@ -125,7 +137,7 @@ const Contact = () => {
                                     return (
                                         <>
                                             <li>{data.titleEn}</li>
-                                            <li>{data.titleKr}</li>
+                                            <li className='kr'>{data.titleKr}</li>
                                         </>
                                     )
                                 })
@@ -137,7 +149,7 @@ const Contact = () => {
                                     if (email.emailType) {
                                         return (
                                             <>
-                                                <li>{email.emailType} - </li>
+                                                <li>{email.emailType}</li>
                                             </>
                                         )
                                     }
@@ -151,7 +163,11 @@ const Contact = () => {
                                 creativePrData.emails.map((email) => {
                                     return (
                                         <>
-                                            <li>{email.emailAddress}</li>
+                                            <li>
+                                                <a href={`mailto:${email.emailAddress}`}>
+                                                    {email.emailAddress}
+                                                </a>
+                                            </li>
                                         </>
                                     )
                                 })
@@ -160,12 +176,77 @@ const Contact = () => {
                     </div>
                 </div>
                 <div className='additional-info-container'>
-                    {additionalData.enText && (
-                        <h4>{additionalData.enText[0].children[0].text}</h4>
-                    )}
-                    {additionalData.krText && (
-                        <h4>{additionalData.krText[0].children[0].text}</h4>
-                    )}
+                    <div className='content'>
+                        {additionalData.enText && (
+                            <h4>
+                                {additionalData.enText[0].children.map((child) => {
+                                    if (child.text === additionalData.enText[0].markDefs[0].href) {
+                                        return (
+                                          <a href={child.text} key={child._key}>
+                                            {child.text}
+                                          </a>
+                                        );
+                                      } else {
+                                        return child.text;
+                                      }
+                                })}
+                            </h4>
+                        )}
+                        {additionalData.krText && (
+                            <h4>
+                                {additionalData.krText[0].children.map((child) => {
+                                    if (child.text === additionalData.krText[0].markDefs[0].href) {
+                                        return (
+                                          <a href={child.text} key={child._key}>
+                                            {child.text}
+                                          </a>
+                                        );
+                                    } else {
+                                        return child.text;
+                                    }
+                                })}
+                            </h4>
+                        )}
+                    </div>
+                </div>
+                <div className='map-section'>
+                    <div className='phone-numbers'>
+                        {mapData && mapData.phoneNumbers && mapData.phoneNumbers[0].enText && (
+                            <h4>
+                                {mapData.phoneNumbers[0].enText[0].children.map((child) => {
+                                    if (child.text === mapData.phoneNumbers[0].enText[0].markDefs[0].href) {
+                                        return (
+                                          <a href={`tel:${child.text}`} key={child._key}>
+                                            {child.text}
+                                          </a>
+                                        );
+                                      } else {
+                                        return child.text;
+                                      }
+                                })}
+                            </h4>
+                        )}
+                        {mapData && mapData.phoneNumbers && mapData.phoneNumbers[0].krText && (
+                            <h4>
+                                {mapData.phoneNumbers[0].krText[0].children.map((child) => {
+                                    if (child.text === mapData.phoneNumbers[0].krText[0].markDefs[0].href) {
+                                        return (
+                                          <a href={`tel:${child.text}`} key={child._key}>
+                                            {child.text}
+                                          </a>
+                                        );
+                                      } else {
+                                        return child.text;
+                                      }
+                                })}
+                            </h4>
+                        )}
+                    </div>
+                    <div className='map'>
+                        {mapData && mapData.mapIframe && (
+                            <div className='iframe-container' dangerouslySetInnerHTML={{ __html: mapData.mapIframe }} />
+                        )}
+                    </div>
                 </div>
             </main>
         </>

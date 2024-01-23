@@ -1,6 +1,6 @@
 .contact-page {
     height: 100%;
-    width: 100%;
+    width: 90%;
     padding-left: 5rem;
     margin-top: 15vh;
 }
@@ -22,7 +22,6 @@
 .emails-container .creativepr-inquiry-container {
     display: flex;
     gap: 50px;
-    border-bottom: 1px solid #000;
     width: fit-content;
 }
 
@@ -52,9 +51,62 @@
 
 .additional-info-container {
     margin-top: 10rem;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.additional-info-container .content {
+    margin-bottom: 4rem;
 }
 
 .additional-info-container h4 {
     font-family: 'Hemi Head';
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.additional-info-container a {
+    text-transform: lowercase;
+}
+
+.map-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.map-section .phone-numbers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: 'Hemi Head';
+    text-transform: uppercase;
+    margin-bottom: 10rem;
+}
+
+.map-section .phone-numbers h4 {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 0;
+    margin-top: 0;
+    align-items: baseline;
+    font-weight: normal;
 }
   
+.map-section .phone-numbers a {
+    width: 200px;
+    text-align: end;
+}
+
+.map-section .phone-numbers h4:nth-child(2) {
+    font-weight: normal;
+}
+
+.map-section .map .iframe-container iframe {
+    display: flex;
+    width: 100%;
+}

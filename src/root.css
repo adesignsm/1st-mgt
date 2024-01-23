@@ -6,7 +6,6 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
     width: 100vw;
     overflow-x: hidden;
 }
@@ -38,4 +37,8 @@ a:visited {
 
 button, h2 {
     font-family: 'Hemi Head';
+}
+
+.kr {
+    letter-spacing: -2px;
 }
