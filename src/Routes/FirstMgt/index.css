@@ -44,3 +44,40 @@
 .first-mgt-page .column-two img {
     width: 60%;
 }
+
+.first-mgt-instagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-mgt-instagram .instagram-container {
+    width: 700px;
+}
+
+.first-mgt-instagram .instagram-container #instafeed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.first-mgt-instagram .instagram-container #instafeed a {
+    width: 33%;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 30%;
+}
+
+.first-mgt-instagram .instagram-container #instafeed img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+}
