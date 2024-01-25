@@ -47,8 +47,6 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
         }
     }
 
-    console.log(isHome)
-
     return (
         <>
             <nav className={`navigation 

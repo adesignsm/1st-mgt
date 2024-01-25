@@ -1,6 +1,7 @@
 /*components */
 import popUp from "./popUp"
 import newsPosts from "./newsPosts"
+import instagram from "./instagram"
 
 /*main routes */
 import firstMgt from "./firstMgt"
@@ -21,6 +22,7 @@ import boysSquadUpComing from "./boysSquadUpComing"
 export const schemaTypes = [
     popUp,
     firstMgt,
+    instagram,
     newsPosts,
     contact,
     girlsClubModels,

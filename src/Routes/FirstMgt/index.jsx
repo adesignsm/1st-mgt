@@ -10,7 +10,7 @@ const FirstMgt = () => {
     const [rightColumn, setRightColumn] = useState();
 
     let instagramFeed = new instafeed({
-        accessToken: 'IGQWRQdndtcjBreVY1UUh5dzBtZAWtRb2xoTVRteDZAkQThKR1dXWlI0Q3ROdWRYYlg4Q3FhR1FSQjZACMTN1TWRUNURnX0dhc1hrRlJWZAzBMYURHLUZAkczIzQjhQMUc1aWRaWkhyZAWREaVFlcmxsaDh4ZAko3Wjg0ZAncZD',
+        accessToken: process.env.REACT_APP_FACEBOOK_TOKEN,
         limit: 12,
     });
 
@@ -20,7 +20,7 @@ const FirstMgt = () => {
       return builder.image(source);
     }
   
-    const fetchData = async () => {
+    const fetchPageData = async () => {
       try {
         const query = `*[_type == '1stMgtPage'][0]`;
         const result = await sanityClient.fetch(query);
@@ -30,9 +30,20 @@ const FirstMgt = () => {
         console.error(error);
       }
     };
+
+    const fetchIgData = async () => {
+        try {
+          const query = `*[_type == 'instagramContent'][0]`;
+          const result = await sanityClient.fetch(query);
+          console.log(result)
+        } catch (error) {
+          console.error(error);
+        }
+    };
   
     useEffect(() => {
-      fetchData();
+      fetchPageData();
+      fetchIgData();
       instagramFeed.run();
     }, []);
 
