@@ -18,12 +18,10 @@ const Header = () => {
         if (window.location.href === homePath || window.location.href === secondaryHomePath) {
             setIsHome(true);
             setMenuOpen(true);
-          } else {
+        } else {
             setIsHome(false);
             setMenuOpen(false);
-          }
-
-          console.log(isHome);
+        }
     }, []);
 
     return (

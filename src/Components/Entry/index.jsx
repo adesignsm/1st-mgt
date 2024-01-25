@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import PopUpEntry from '../PopUpEntry';
 
 import './index.css';
 import ENTRY_GIF from '../../Assets/Logos/entry_gif.gif';
 
 const Entry = () => {
     const [hideEntry, setHideEntry] = useState(false);
+    const [hidePopUp, setHidePopUp] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
@@ -12,11 +14,16 @@ const Entry = () => {
         }, 3000);
     }, [hideEntry]);
 
+    const handleClick = () => {
+        setHideEntry(true);
+    }
+
     return (
         <>
             <div id='entry-screen' className={hideEntry ? 'hideEntry' : null}>
-                <img src={ENTRY_GIF} />
+                <img src={ENTRY_GIF} onClick={handleClick} />
             </div>
+            {hideEntry && <PopUpEntry />}
         </>
     )
 }

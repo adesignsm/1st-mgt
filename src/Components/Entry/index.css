@@ -15,10 +15,12 @@
     transition: all .5s ease;
     -webkit-transition: all 1s ease;
     backdrop-filter: blur(40px);
+    z-index: 999;
 }
 
 #entry-screen img {
     width: 30%;
+    cursor: pointer;
 }
 
 .hideEntry {

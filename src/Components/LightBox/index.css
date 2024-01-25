@@ -1,0 +1,89 @@
+.lightbox {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    z-index: 9;
+}
+
+.close-lightbox {
+    position: absolute;
+    transform: scale(2);
+    top: 100px;
+    right: 100px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.lightbox .left-column {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        position: absolute;
+        z-index: 9;
+        transform: scale(3);
+        cursor: pointer;
+    }
+}
+
+.lightbox .right-column {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        position: absolute;
+        z-index: 9;
+        transform: scale(3);
+        cursor: pointer;
+    }
+}
+  
+/* Individual slide */
+.slide {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    position: absolute; /* Add absolute positioning */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  
+/* Active slide */
+.slide.active {
+    opacity: 1;
+    position: absolute;
+    pointer-events: auto;
+}
+  
+  /* Slide image */
+.slide img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+.slide video {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}

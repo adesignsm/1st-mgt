@@ -49,7 +49,10 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
 
     return (
         <>
-            <nav className={`navigation ${menuOpen ? 'showMenu' : 'hideMenu'}`}>
+            <nav className={`navigation 
+                ${menuOpen ? 'showMenu' : 'hideMenu'}
+                ${isHome ? 'transparent' : 'gradient'}
+            `}>
                 <div className='left-column'>
                     <ul className='main-navigation'>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>
@@ -66,9 +69,9 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 girls club
                             </p>
                             <ul className='sub-items'>
-                               <li>In town</li>
-                               <li>Upcoming</li>
-                               <li>Out of town</li>
+                               <li><a href='/girls-club/in-town'> In town </a></li>
+                               <li><a href='/girls-club/up-coming'>Upcoming</a></li>
+                               <li><a href='/girls-club/out-of-town'>Out of town</a></li>
                             </ul>
                         </li>
                         <li className='main-item-with-dropdown'
@@ -80,9 +83,9 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                         >
                             <p className='main-navigation-item'>boys squad</p>
                             <ul className='sub-items'>
-                               <li>In town</li>
-                               <li>Upcoming</li>
-                               <li>Out of town</li> 
+                               <li><a href='/boys-squad/in-town'> In town </a></li>
+                               <li><a href='/boys-squad/up-coming'> Upcoming </a></li>
+                               <li><a href='/boys-squad/out-of-town'>Out of town</a></li> 
                             </ul>
                         </li>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>

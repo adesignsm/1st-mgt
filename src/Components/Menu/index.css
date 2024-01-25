@@ -11,6 +11,15 @@
     border-radius: 15px;
     display: flex;
     justify-content: space-between;
+    z-index: 2;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.gradient {
+    background: linear-gradient(to right, rgba(217, 217, 217, 0.7), rgba(247, 207, 225, 0.7));
 }
 
 .navigation .left-column {
@@ -96,6 +105,7 @@
 
 .close-menu {
     cursor: pointer;
+    filter: invert(1);
 }
 
 .showClose {
