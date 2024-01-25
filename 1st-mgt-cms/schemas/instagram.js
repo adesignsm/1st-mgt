@@ -29,17 +29,23 @@ export default {
                     description: 'The text that will appear to the left of the instagram images',
                 },
                 {
+                    name: 'tagText',
+                    title: 'Tag Text',
+                    type: 'string',
+                    description: 'This text will appear to the right side bottom of your Instagram feed.',
+                },
+                {
                     name: 'igOptions',
                     type: 'object',
                     title: 'Instagram Options',
                     description: 'Set up options for your instagram feed content.',
                     fields: [
-                        // {
-                        //     name: 'accessToken',
-                        //     title: 'Access Token',
-                        //     type: 'string',
-                        //     description: 'Provide an access token to connect your instagram account. (Contact your developer if you dont have a token)',
-                        // },
+                        {
+                            name: 'accessToken',
+                            title: 'Access Token',
+                            type: 'string',
+                            description: 'Provide an access token to connect your instagram account. (Contact your developer if you dont have a token)',
+                        },
                         {
                             name: 'limit',
                             title: 'Instagram Post Limit',
@@ -74,12 +80,18 @@ export default {
                     title: 'Instagram Options',
                     description: 'Set up options for your instagram feed content.',
                     fields: [
-                        // {
-                        //     name: 'accessToken',
-                        //     title: 'Access Token',
-                        //     type: 'string',
-                        //     description: 'Provide an access token to connect your instagram account. (Contact your developer if you dont have a token)',
-                        // },
+                        {
+                            name: 'accessToken_boysSquad',
+                            title: 'Access Token for the Naughty Boys Squad Instgaram',
+                            type: 'string',
+                            description: 'Provide an access token to connect your instagram account. (Contact your developer if you dont have a token)',
+                        },
+                        {
+                            name: 'accessToken_dreamGirls',
+                            title: 'Access Token for the Dream Girls Club Instgaram',
+                            type: 'string',
+                            description: 'Provide an access token to connect your instagram account. (Contact your developer if you dont have a token)',
+                        },
                         {
                             name: 'limit',
                             title: 'Instagram Post Limit',
