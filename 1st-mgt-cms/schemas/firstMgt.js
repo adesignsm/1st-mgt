@@ -68,6 +68,70 @@ export default {
                     type: 'image',
                 },
             ]
+        },
+        {
+            name: 'projectsColumn',
+            type: 'object',
+            title: 'The Projects Section',
+            description: 'Content for the Projects section that is below the Instagram section.',
+            fields: [
+                {
+                    title: 'Projects Section Title',
+                    name: 'projectsTitle',
+                    type: 'string',
+                    description: 'The title for the Projects Section'
+                },
+                {
+                    name: 'projectsMedia',
+                    title: 'Project Media',
+                    type: 'array',
+                    description: 'You can add multiple project media peices here.',
+                    of: [
+                        {
+                            type: 'image',
+                            options: {
+                                hotspot: true
+                            }
+                        },
+                        {
+                            type: 'file',
+                            title: 'Video'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: 'clientsColumn',
+            type: 'object',
+            title: 'The Clients Section',
+            description: 'Content for the Clients section that is below the Instagram section.',
+            fields: [
+                {
+                    title: 'Clients Section Title',
+                    name: 'clientsTitle',
+                    type: 'string',
+                    description: 'The title for the Clients Section'
+                },
+                {
+                    name: 'clientsMedia',
+                    title: 'Client Media',
+                    type: 'array',
+                    description: 'You can add multiple client media pieces here.',
+                    of: [
+                        {
+                            type: 'image',
+                            options: {
+                                hotspot: true
+                            }
+                        },
+                        {
+                            type: 'file',
+                            title: 'Video'
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
