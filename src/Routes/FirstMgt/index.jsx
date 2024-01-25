@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import sanityClient from '../../client';
 import ImageUrlBuilder from '@sanity/image-url';
+import instafeed from "instafeed.js";
 
 import './index.css';
 
 const FirstMgt = () => {
     const [leftColumn, setLeftColumn] = useState();
     const [rightColumn, setRightColumn] = useState();
+
+    let instagramFeed = new instafeed({
+        accessToken: 'IGQWRQdndtcjBreVY1UUh5dzBtZAWtRb2xoTVRteDZAkQThKR1dXWlI0Q3ROdWRYYlg4Q3FhR1FSQjZACMTN1TWRUNURnX0dhc1hrRlJWZAzBMYURHLUZAkczIzQjhQMUc1aWRaWkhyZAWREaVFlcmxsaDh4ZAko3Wjg0ZAncZD',
+        limit: 12,
+    });
 
     const builder = ImageUrlBuilder(sanityClient);
 
@@ -27,6 +33,7 @@ const FirstMgt = () => {
   
     useEffect(() => {
       fetchData();
+      instagramFeed.run();
     }, []);
 
     return (
@@ -64,6 +71,11 @@ const FirstMgt = () => {
                             <img src={urlFor(rightColumn.image.asset._ref).url()} />
                         )}
                     </div>
+                </div>
+            </main>
+            <main className='first-mgt-instagram'>
+                <div className='instagram-container'>
+                    <div id='instafeed'></div>
                 </div>
             </main>
         </>
