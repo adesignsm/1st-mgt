@@ -117,3 +117,25 @@
 .naughty-boys-dream-girls-instagram  .copy-container h2 {
     margin: .5rem;
 }
+
+.projects-and-clients {
+    margin-top: 10rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.projects-and-clients .projects-column img,
+.projects-and-clients .clients-column img {
+    width: auto;
+    max-width: 300px;
+    height: auto;
+}
+
+.projects-and-clients .projects-column .media,
+.projects-and-clients .clients-column .media {
+    display: flex;
+    gap: 10px;
+}

@@ -8,6 +8,8 @@ import './index.css';
 const FirstMgt = () => {
     const [leftColumn, setLeftColumn] = useState();
     const [rightColumn, setRightColumn] = useState();
+    const [projectsColumn, setProjectsColumn] = useState([]);
+    const [clientsColumn, setClientsColumn] = useState([]);
 
     const [firstMgtIg, setFirstMgtIg] = useState([]);
     const [naughtyBoyDreamGirlsIg, setNaughtyBoyDreamGirlsIg] = useState([]);
@@ -27,6 +29,8 @@ const FirstMgt = () => {
             const result = await sanityClient.fetch(query);
             setLeftColumn(result.leftColumn);
             setRightColumn(result.rightColumn);
+            setProjectsColumn(result.projectsColumn);
+            setClientsColumn(result.clientsColumn)
         } catch (error) {
             console.error(error);
         }
@@ -58,7 +62,7 @@ const FirstMgt = () => {
     
             instagramFeedFirstMgt.run();
             setFirstMgtLoaded(true);
-        } else if (naughtyBoyDreamGirlsIg && naughtyBoyDreamGirlsIg.igOptions && !naughtyBoysLoaded) {
+        } else if (naughtyBoyDreamGirlsIg && naughtyBoyDreamGirlsIg.igOptions && !naughtyBoysLoaded && !dreamGirlsLoaded) {
             let instagramFeedNaughtyBoys = new instafeed({
                 accessToken: naughtyBoyDreamGirlsIg.igOptions.accessToken_boysSquad,
                 limit: naughtyBoyDreamGirlsIg.igOptions.limit,
@@ -77,6 +81,8 @@ const FirstMgt = () => {
             setDreamGirlsLoaded(true);
         }
     }, [firstMgtIg, naughtyBoyDreamGirlsIg]);
+
+    console.log(Object.values(projectsColumn))
 
     return (
         <>
@@ -150,6 +156,50 @@ const FirstMgt = () => {
                         </>
                     )}
                 </article>
+            </main>
+            <main className='projects-and-clients'>
+                <div className='projects-column'>
+                    {projectsColumn && (
+                        <>
+                            <div className='title'>
+                                <h3>{Object.values(projectsColumn)[1]}</h3>
+                                <h3>{Object.values(projectsColumn)[0]}</h3>
+                            </div>
+                            <div className='media'>
+                                {Object.values(projectsColumn).map((media) => {
+                                    if (typeof(media) === 'object') {
+                                        return media.map((item, index) => (
+                                            <img key={index} src={urlFor(item.asset._ref).url()} alt={`Image ${index}`} />
+                                        ));
+                                    } else {
+                                        return null;
+                                    }
+                                })}
+                            </div>
+                        </>
+                    )}
+                </div>
+                <div className='clients-column'>
+                    {clientsColumn && (
+                        <>
+                            <div className='title'>
+                                <h3>{Object.values(clientsColumn)[0]}</h3>
+                                <h3>{Object.values(clientsColumn)[1]}</h3>
+                            </div>
+                            <div className='media'>
+                                {Object.values(clientsColumn).map((media) => {
+                                    if (typeof(media) === 'object') {
+                                        return media.map((item, index) => (
+                                            <img key={index} src={urlFor(item.asset._ref).url()} alt={`Image ${index}`} />
+                                        ));
+                                    } else {
+                                        return null;
+                                    }
+                                })}
+                            </div>
+                        </>
+                    )}
+                </div>
             </main>
         </>
     )
