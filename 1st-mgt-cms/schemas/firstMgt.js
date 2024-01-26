@@ -76,10 +76,16 @@ export default {
             description: 'Content for the Projects section that is below the Instagram section.',
             fields: [
                 {
-                    title: 'Projects Section Title',
-                    name: 'projectsTitle',
+                    title: 'Projects Section English Title',
+                    name: 'projectsEnTitle',
                     type: 'string',
-                    description: 'The title for the Projects Section'
+                    description: 'The English title for the Projects Section'
+                },
+                {
+                    title: 'Projects Section Korean Title',
+                    name: 'projectsKrTitle',
+                    type: 'string',
+                    description: 'The Korean title for the Projects Section'
                 },
                 {
                     name: 'projectsMedia',
@@ -108,10 +114,16 @@ export default {
             description: 'Content for the Clients section that is below the Instagram section.',
             fields: [
                 {
-                    title: 'Clients Section Title',
-                    name: 'clientsTitle',
+                    title: 'Clients Section English Title',
+                    name: 'clientsEnTitle',
                     type: 'string',
-                    description: 'The title for the Clients Section'
+                    description: 'The English title for the Clients Section'
+                },
+                {
+                    title: 'Clients Section Korean Title',
+                    name: 'clientsKrTitle',
+                    type: 'string',
+                    description: 'The Korean title for the Clients Section'
                 },
                 {
                     name: 'clientsMedia',
