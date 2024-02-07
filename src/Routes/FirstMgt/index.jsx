@@ -82,7 +82,7 @@ const FirstMgt = () => {
         }
     }, [firstMgtIg, naughtyBoyDreamGirlsIg]);
 
-    // console.log(Object.values(clientsColumn))
+    console.log(projectsColumn.projectsEnTitle)
 
     return (
         <>
@@ -162,8 +162,8 @@ const FirstMgt = () => {
                     {projectsColumn && (
                         <>
                             <div className='title'>
-                                <h3>{Object.values(projectsColumn)[0]}</h3>
-                                <h3>{Object.values(projectsColumn)[2]}</h3>
+                                <h3>{projectsColumn.projectsEnTitle}</h3>
+                                <h3>{projectsColumn.projectsKrTitle}</h3>
                             </div>
                             <div className='media'>
                                 {Object.values(projectsColumn).map((media) => {
@@ -183,8 +183,8 @@ const FirstMgt = () => {
                     {clientsColumn && (
                         <>
                             <div className='title'>
-                                <h3>{Object.values(clientsColumn)[1]}</h3>
-                                <h3>{Object.values(clientsColumn)[2]}</h3>
+                                <h3>{clientsColumn.clientsEnTitle}</h3>
+                                <h3>{clientsColumn.clientsKrTitle}</h3>
                             </div>
                             <div className='media'>
                                 {Object.values(clientsColumn).map((media) => {
