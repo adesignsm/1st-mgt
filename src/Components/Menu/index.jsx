@@ -25,8 +25,6 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
         } else if (e.target.id === 'boys-squad-menu') {
             e.target.nextSibling.classList.add('show');
         }
-
-        console.log(e.target.nextSibling.classList)
     }
 
     const handleDropdownLeave = (e) => {
@@ -35,8 +33,6 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
         } else if (e.target.id === 'boys-squad-menu') {
             e.target.nextSibling.classList.remove('show');
         }
-
-        console.log(e.target.nextSibling.classList)
     }
 
     const handleBackgroundImageChange = (e) => {
