@@ -19,12 +19,24 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
          : setIsHome(false);
     }, [isHome]);
 
-    const handleDropdownToggle = (e) => {
-        if (e.target.classList.contains('main-navigation-item') && !e.target.nextSibling.classList.contains('show')) {
+    const handleDropdownEnter = (e) => {
+        if (e.target.id === 'girls-club-menu') {
             e.target.nextSibling.classList.add('show');
-        } else if (e.target.classList.contains('main-navigation-item') && e.target.nextSibling.classList.contains('show')) {
+        } else if (e.target.id === 'boys-squad-menu') {
+            e.target.nextSibling.classList.add('show');
+        }
+
+        console.log(e.target.nextSibling.classList)
+    }
+
+    const handleDropdownLeave = (e) => {
+        if (e.target.id === 'girls-club-menu') {
+            e.target.nextSibling.classList.remove('show');
+        } else if (e.target.id === 'boys-squad-menu') {
             e.target.nextSibling.classList.remove('show');
         }
+
+        console.log(e.target.nextSibling.classList)
     }
 
     const handleBackgroundImageChange = (e) => {
@@ -58,31 +70,29 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>
                             <a href='/1st-mgt'>1st mgt</a>
                         </li>
-                        <li className='main-item-with-dropdown'
-                            onMouseEnter={(e) => {
-                                handleDropdownToggle(e);
-                                handleBackgroundImageChange(e);
-                            }}
-                            onMouseLeave={(e) => handleDropdownToggle(e)}
+                        <li className='main-item-with-dropdown' 
+                            onMouseEnter={(e) => {handleBackgroundImageChange(e)}}
                         >
-                            <p className='main-navigation-item'>
-                                girls club
-                            </p>
-                            <ul className='sub-items'>
+                            <p 
+                                id='girls-club-menu' 
+                                className='main-navigation-item' 
+                                onMouseEnter={(e) => handleDropdownEnter(e)} 
+                                onMouseLeave={(e) => handleDropdownLeave(e)}>girls club</p>
+                            <ul id='girls-club-dropdown' className='sub-items'>
                                <li><a href='/girls-club/in-town'> In town </a></li>
                                <li><a href='/girls-club/up-coming'>Upcoming</a></li>
                                <li><a href='/girls-club/out-of-town'>Out of town</a></li>
                             </ul>
                         </li>
                         <li className='main-item-with-dropdown'
-                            onMouseEnter={(e) => {
-                                handleDropdownToggle(e);
-                                handleBackgroundImageChange(e);
-                            }}
-                            onMouseLeave={(e) => handleDropdownToggle(e)}
+                            onMouseEnter={(e) => {handleBackgroundImageChange(e)}}
                         >
-                            <p className='main-navigation-item'>boys squad</p>
-                            <ul className='sub-items'>
+                            <p 
+                                id='boys-squad-menu' 
+                                className='main-navigation-item' 
+                                onMouseEnter={(e) => handleDropdownEnter(e)} 
+                                onMouseLeave={(e) => handleDropdownLeave(e)}>boys squad</p>
+                            <ul id='boys-squad-dropdown' className='sub-items'>
                                <li><a href='/boys-squad/in-town'> In town </a></li>
                                <li><a href='/boys-squad/up-coming'> Upcoming </a></li>
                                <li><a href='/boys-squad/out-of-town'>Out of town</a></li> 
