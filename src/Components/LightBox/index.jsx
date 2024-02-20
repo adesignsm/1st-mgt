@@ -44,9 +44,9 @@ const LightBox = ({data}) => {
     }
 
     const videoConversion = (source) => {
-        const assetRef = source.asset._ref;
-        const withoutFilePrefix = assetRef.replace('file-', '');
-        const modifiedAssetRef = withoutFilePrefix.replace(/-(?=[^-]*$)/, '.');
+        const assetRef = source.asset !== undefined ? source.asset._ref : null;
+        const withoutFilePrefix = assetRef !== null ? assetRef.replace('file-', '') : null;
+        const modifiedAssetRef = withoutFilePrefix !== null ? withoutFilePrefix.replace(/-(?=[^-]*$)/, '.') : null;
         const mutatedRef = 'https://cdn.sanity.io/files/gvoh9rir/production/' + modifiedAssetRef;
 
         return (
@@ -75,7 +75,7 @@ const LightBox = ({data}) => {
                     [data[0], data[1]].map((dataArray, dataIndex) => (
                         dataArray.map((item, index) => (
                             <div key={index} className={`slide ${index === currentIndex ? 'active' : ''}`}>
-                                {item._type === 'image' ? (
+                                {item._type === 'image' && item.asset !== undefined ? (
                                     <img src={urlFor(item.asset._ref).url()} alt={`Slide ${index}`} />
                                 ) : (
                                    videoConversion(item)

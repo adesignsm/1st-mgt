@@ -14,20 +14,20 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.8);
-    z-index: 2;
+    z-index: 11;
 }
 
 .showPopUp {
     opacity: 1;
     pointer-events: all;
-    transition: all 1s ease;
-    transition-delay: 1s;
+    transition: all .3s ease;
+    transition-delay: .3s;
 }
 
 .hidePopUp {
     opacity: 0;
     pointer-events: none;
-    transition: all 1s ease;
+    transition: all .3s ease;
 }
 
 .popup-entry-container h1 {
