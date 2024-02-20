@@ -150,7 +150,7 @@ const BoysSquadIndividual = () => {
                             [...Object.values(modelImageContent), ...Object.values(modelFileContent)].map((content, index) => {
                             return (
                                 <div key={index}>
-                                    {content._type === 'image' && (
+                                    {content.asset !== undefined && content._type === 'image' && (
                                         <img 
                                             src={urlFor(content.asset._ref).url()} 
                                             onClick={(e) => handleImageClick(e)}

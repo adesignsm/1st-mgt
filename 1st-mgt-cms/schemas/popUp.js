@@ -23,7 +23,7 @@ export default {
         {
             name: 'popUpEntry',
             type: 'object',
-            title: 'Pop-Up Entry Page Content',
+            title: 'Pop-Up Entry Container Content',
             description: 'Content in this section is what users will see when they first enter the website in the pop up container.',
             fields: [
                 {
@@ -34,10 +34,67 @@ export default {
                 },
                 {
                     name: 'enterButtonText',
-                    type: 'string',
-                    title: 'Enter Button Text',
-                    description: 'This is the text for the Pop Up enter button',
+                    type: 'object',
+                    title: '"Click for more button" Settings',
+                    description: 'Adjust the settings for the pop up "Click for more" button',
+                    fields: [
+                        {
+                            name: 'text',
+                            title: 'Button text',
+                            type: 'string',
+                            description: 'The text that will appear in the button.'
+                        },
+                        {
+                            name: 'modelRedirect',
+                            title: 'Models.com Redirect',
+                            type: 'object',
+                            description: 'Adjust settings for the Models.com redirect.',
+                            fields: [
+                                {
+                                    name: 'toggle',
+                                    title: 'Toggle on/off',
+                                    type: 'boolean'
+                                },
+                                {
+                                    name: 'url',
+                                    title: 'Models.com Url',
+                                    type: 'url',
+                                },
+                            ]
+                        },
+                        {
+                            name: 'customPage',
+                            title: 'Custom Page Redirect',
+                            type: 'object',
+                            description: 'Adjust settings for the Models.com redirect.',
+                            fields: [
+                                {
+                                    name: 'toggle',
+                                    title: 'Toggle on/off',
+                                    type: 'boolean'
+                                },
+                            ]
+                        }
+                    ]
                 },
+                {
+                    name: 'backgrounImage',
+                    title: 'Background Image',
+                    type: 'image',
+                    description: 'Upload an image here to apply a background image to the pop up. *Remove the image to leave th pop up blank.'
+                },
+                {
+                    name: 'popupTiming',
+                    type: 'number',
+                    title: 'Pop Up Entry timing',
+                    description: 'The timing for how long it takes the pop up to appear after the browser has loaded. *Note: this unit is measured in seconds. If left empty, the default timing value will be 3 seconds.',
+                    validation: Rule => Rule.custom(value => {
+                        if (value && (value < 0 || value > 9)) {
+                          return 'Only single digits are allowed.';
+                        }
+                        return true;
+                    })
+                }
             ]
         },
         {

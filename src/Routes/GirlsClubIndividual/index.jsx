@@ -96,7 +96,7 @@ const GirlsClubIndividual = () => {
                                                 {modelStats.bust.unit === 'cm' ? 'cm' : 
                                                  modelStats.bust.unit === 'ft' ? 'ft' : 
                                                  modelStats.bust.unit === '"' ? '"' :
-                                                 modelStats.bust.unoutoftownwaiit === 'mm' ? 'mm' : 'Unknown'
+                                                 modelStats.bust.unit === 'mm' ? 'mm' : 'Unknown'
                                                 }
                                             </li>
                                             <li>
@@ -104,7 +104,7 @@ const GirlsClubIndividual = () => {
                                                 {modelStats.waist.unit === 'cm' ? 'cm' : 
                                                  modelStats.waist.unit === 'ft' ? 'ft' : 
                                                  modelStats.waist.unit === '"' ? '"' :
-                                                 modelStats.waist.unit === 'mm' ? 'mm' : 'Unknown'
+                                                 modelStats.waist.unit === 'MM' ? 'mm' : 'Unknown'
                                                 }
                                             </li>
                                             <li>
@@ -112,7 +112,7 @@ const GirlsClubIndividual = () => {
                                                 {modelStats.hips.unit === 'cm' ? 'cm' : 
                                                  modelStats.hips.unit === 'ft' ? 'ft' : 
                                                  modelStats.hips.unit === '"' ? '"' :
-                                                 modelStats.hips.unit === 'mm' ? 'mm' : 'Unknown'
+                                                 modelStats.hips.unit === 'MM' ? 'mm' : 'Unknown'
                                                 }
                                             </li>
                                             <li>
@@ -136,7 +136,7 @@ const GirlsClubIndividual = () => {
                         )}
                     </div>
                     <div className="right-column">
-                        {Object.keys(modelImageContent).length > 0 && (
+                        {modelImageContent !== undefined && Object.keys(modelImageContent).length > 0 && (
                             <img className="hero-image" src={urlFor(modelImageContent[0].asset._ref).url()} />
                         )}
                     </div>
@@ -144,7 +144,7 @@ const GirlsClubIndividual = () => {
                 <div className="model-collage">
                     <h1>{modelData.modelName}</h1>
                     <div className="collage">
-                        {(Object.keys(modelImageContent).length > 0) && (
+                        {modelImageContent !== undefined && (Object.keys(modelImageContent).length > 0) && (
                             Object.values(modelImageContent).map((content, index) => {
                                 return (
                                     <div key={index}>

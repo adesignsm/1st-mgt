@@ -6,7 +6,6 @@ import ENTRY_GIF from '../../Assets/Logos/entry_gif.gif';
 
 const Entry = () => {
     const [hideEntry, setHideEntry] = useState(false);
-    const [hidePopUp, setHidePopUp] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {

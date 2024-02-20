@@ -1,3 +1,11 @@
+#first-mgt-page {
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d9d9d9",GradientType=1);
+}
+
 .first-mgt-page {
     display: flex;
     padding-top: 10rem;
@@ -5,6 +13,25 @@
 
 .first-mgt-page .column-one {
     padding-left: 13rem;
+    opacity: 0;
+    margin-left: -1rem;
+    transition: all .3s ease;
+}
+
+.first-mgt-page .column-two {
+    opacity: 0;
+    margin-right: -1rem;
+    transition: all .3s ease;
+}
+
+.animate-left {
+    margin-left: 0 !important;
+    opacity: 1 !important;
+}
+
+.animate-right {
+    margin-right: 0 !important;
+    opacity: 1 !important;
 }
 
 .first-mgt-page .column-one h1 {

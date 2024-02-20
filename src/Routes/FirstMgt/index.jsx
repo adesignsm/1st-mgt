@@ -52,6 +52,19 @@ const FirstMgt = () => {
         fetchIgData();
     }, []);
 
+    const addAnimations = () => {
+        const leftColumn = document.querySelector('.column-one');
+        const rightColumn = document.querySelector('.column-two');
+
+        setTimeout(() => {
+            leftColumn.classList.add('animate-left');
+        }, 250);
+
+        setTimeout(() => {
+            rightColumn.classList.add('animate-right');
+        }, 350);
+    }
+
     useEffect(() => {
         if (firstMgtIg && firstMgtIg.igOptions && !firstMgtLoaded) {
             let instagramFeedFirstMgt = new instafeed({
@@ -82,124 +95,128 @@ const FirstMgt = () => {
         }
     }, [firstMgtIg, naughtyBoyDreamGirlsIg]);
 
-    console.log(projectsColumn.projectsEnTitle)
+    document.addEventListener('DOMContentLoaded', () => {
+        addAnimations();
+    });
 
     return (
-        <>
-            <main className='first-mgt-page'>
-                <article className='column-one'>
-                    {leftColumn && (
-                        <>
-                            <article className='first-mgt-copy'>
-                                <h1>{leftColumn.headingText}</h1>
-                                {leftColumn.bodyText_EN.map((item, index) => {
-                                    return (
-                                        <h2 key={index}>{item.children[0].text}</h2>
-                                    )
-                                })}
-                                {leftColumn.bodyText_KR.map((item, index) => {
-                                    return (
-                                        <h2 key={index}>{item.children[0].text}</h2>
-                                    )
-                                })}
-                            </article>
-                            <article className='trailing-tags'>
-                                {leftColumn.trailingTags.map((item, index) => {
-                                    return (
-                                        <span key={index}>{item.children[0].text}</span>
-                                    )
-                                })}
-                            </article>
-                        </>
-                    )}
-                </article>
-                <div className='column-two'>
-                    <div className='first-mgt-image'>
-                        {rightColumn && (
-                            <img src={urlFor(rightColumn.image.asset._ref).url()} />
+        <>  
+            <main id='first-mgt-page'>
+                <main className='first-mgt-page'>
+                    <article className='column-one'>
+                        {leftColumn && (
+                            <>
+                                <article className='first-mgt-copy'>
+                                    <h1>{leftColumn.headingText}</h1>
+                                    {leftColumn.bodyText_EN.map((item, index) => {
+                                        return (
+                                            <h2 key={index}>{item.children[0].text}</h2>
+                                        )
+                                    })}
+                                    {leftColumn.bodyText_KR.map((item, index) => {
+                                        return (
+                                            <h2 key={index}>{item.children[0].text}</h2>
+                                        )
+                                    })}
+                                </article>
+                                <article className='trailing-tags'>
+                                    {leftColumn.trailingTags.map((item, index) => {
+                                        return (
+                                            <span key={index}>{item.children[0].text}</span>
+                                        )
+                                    })}
+                                </article>
+                            </>
+                        )}
+                    </article>
+                    <div className='column-two'>
+                        <div className='first-mgt-image'>
+                            {rightColumn && (
+                                <img src={urlFor(rightColumn.image.asset._ref).url()} />
+                            )}
+                        </div>
+                    </div>
+                </main>
+                <main className='first-mgt-instagram'>
+                    <article className='copy-container'>
+                        {firstMgtIg && (
+                            <>
+                                <h2>{firstMgtIg.englishText}</h2>
+                                <h2>{firstMgtIg.koreanText}</h2>
+                            </>
+                        )}
+                    </article>
+                    <div className='instagram-container'>
+                        <div id='instafeed-firstMgt' className='instagram-grid'></div>
+                    </div>
+                    <div className='tags-container'>
+                        {firstMgtIg && (
+                            <h2>{firstMgtIg.tagText}</h2>
                         )}
                     </div>
-                </div>
-            </main>
-            <main className='first-mgt-instagram'>
-                <article className='copy-container'>
-                    {firstMgtIg && (
-                        <>
-                            <h2>{firstMgtIg.englishText}</h2>
-                            <h2>{firstMgtIg.koreanText}</h2>
-                        </>
-                    )}
-                </article>
-                <div className='instagram-container'>
-                    <div id='instafeed-firstMgt' className='instagram-grid'></div>
-                </div>
-                <div className='tags-container'>
-                    {firstMgtIg && (
-                        <h2>{firstMgtIg.tagText}</h2>
-                    )}
-                </div>
-            </main>
-            <main className='naughty-boys-dream-girls-instagram'>
-                <div className='instagram-feed-container'>
-                    <div className='instagram-container'>
-                        <div id='instafeed-dreamGirls' className='instagram-grid'></div>
+                </main>
+                <main className='naughty-boys-dream-girls-instagram'>
+                    <div className='instagram-feed-container'>
+                        <div className='instagram-container'>
+                            <div id='instafeed-dreamGirls' className='instagram-grid'></div>
+                        </div>
+                        <div className='instagram-container'>
+                            <div id='instafeed-naughtyBoys' className='instagram-grid'></div>
+                        </div>
                     </div>
-                    <div className='instagram-container'>
-                        <div id='instafeed-naughtyBoys' className='instagram-grid'></div>
+                    <article className='copy-container'>
+                        {naughtyBoyDreamGirlsIg && (
+                            <>
+                                <h2>{naughtyBoyDreamGirlsIg.englishText}</h2>
+                                <h2>{naughtyBoyDreamGirlsIg.koreanText}</h2>
+                            </>
+                        )}
+                    </article>
+                </main>
+                <main className='projects-and-clients'>
+                    <div className='projects-column'>
+                        {projectsColumn && (
+                            <>
+                                <div className='title'>
+                                    <h3>{projectsColumn.projectsEnTitle}</h3>
+                                    <h3>{projectsColumn.projectsKrTitle}</h3>
+                                </div>
+                                <div className='media'>
+                                    {Object.values(projectsColumn).map((media) => {
+                                        if (typeof(media) === 'object') {
+                                            return media.map((item, index) => (
+                                                <img key={index} src={urlFor(item.asset._ref).url()} alt={`Image ${index}`} />
+                                            ));
+                                        } else {
+                                            return null;
+                                        }
+                                    })}
+                                </div>
+                            </>
+                        )}
                     </div>
-                </div>
-                <article className='copy-container'>
-                    {naughtyBoyDreamGirlsIg && (
-                        <>
-                            <h2>{naughtyBoyDreamGirlsIg.englishText}</h2>
-                            <h2>{naughtyBoyDreamGirlsIg.koreanText}</h2>
-                        </>
-                    )}
-                </article>
-            </main>
-            <main className='projects-and-clients'>
-                <div className='projects-column'>
-                    {projectsColumn && (
-                        <>
-                            <div className='title'>
-                                <h3>{projectsColumn.projectsEnTitle}</h3>
-                                <h3>{projectsColumn.projectsKrTitle}</h3>
-                            </div>
-                            <div className='media'>
-                                {Object.values(projectsColumn).map((media) => {
-                                    if (typeof(media) === 'object') {
-                                        return media.map((item, index) => (
-                                            <img key={index} src={urlFor(item.asset._ref).url()} alt={`Image ${index}`} />
-                                        ));
-                                    } else {
-                                        return null;
-                                    }
-                                })}
-                            </div>
-                        </>
-                    )}
-                </div>
-                <div className='clients-column'>
-                    {clientsColumn && (
-                        <>
-                            <div className='title'>
-                                <h3>{clientsColumn.clientsEnTitle}</h3>
-                                <h3>{clientsColumn.clientsKrTitle}</h3>
-                            </div>
-                            <div className='media'>
-                                {Object.values(clientsColumn).map((media) => {
-                                    if (typeof(media) === 'object') {
-                                        return media.map((item, index) => (
-                                            <img key={index} src={urlFor(item.asset._ref).url()} alt={`Image ${index}`} />
-                                        ));
-                                    } else {
-                                        return null;
-                                    }
-                                })}
-                            </div>
-                        </>
-                    )}
-                </div>
+                    <div className='clients-column'>
+                        {clientsColumn && (
+                            <>
+                                <div className='title'>
+                                    <h3>{clientsColumn.clientsEnTitle}</h3>
+                                    <h3>{clientsColumn.clientsKrTitle}</h3>
+                                </div>
+                                <div className='media'>
+                                    {Object.values(clientsColumn).map((media) => {
+                                        if (typeof(media) === 'object') {
+                                            return media.map((item, index) => (
+                                                <img key={index} src={urlFor(item.asset._ref).url()} alt={`Image ${index}`} />
+                                            ));
+                                        } else {
+                                            return null;
+                                        }
+                                    })}
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </main>
             </main>
         </>
     )

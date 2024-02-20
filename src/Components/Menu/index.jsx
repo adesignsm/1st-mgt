@@ -20,18 +20,23 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
     }, [isHome]);
 
     const handleDropdownEnter = (e) => {
-        if (e.target.id === 'girls-club-menu') {
-            e.target.nextSibling.classList.add('show');
-        } else if (e.target.id === 'boys-squad-menu') {
-            e.target.nextSibling.classList.add('show');
+        if (e.target.id === 'girls-club-menu' || e.target.classList.contains('girls-club-li')) {
+            document.getElementById('girls-club-dropdown').classList.add('show');
+        }
+        
+        if (e.target.id === 'boys-squad-menu' || e.target.classList.contains('boys-squad-li')) {
+            document.getElementById('boys-squad-dropdown').classList.add('show');
         }
     }
 
     const handleDropdownLeave = (e) => {
-        if (e.target.id === 'girls-club-menu') {
-            e.target.nextSibling.classList.remove('show');
-        } else if (e.target.id === 'boys-squad-menu') {
-            e.target.nextSibling.classList.remove('show');
+        console.log(e.target)
+        if (e.target.id !== 'girls-club-menu') {
+            document.getElementById('girls-club-dropdown').classList.remove('show');
+        }
+        
+        if (e.target.id !== 'boys-squad-menu') {
+            document.getElementById('boys-squad-dropdown').classList.remove('show');
         }
     }
 
@@ -59,10 +64,10 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
         <>
             <nav className={`navigation 
                 ${menuOpen ? 'showMenu' : 'hideMenu'}
-                ${isHome ? 'transparent' : 'gradient'}
+                ${isHome ? 'pink-bg' : 'gradient'}
             `}>
                 <div className='left-column'>
-                    <ul className='main-navigation'>
+                    <ul className='main-navigation' onMouseEnter={(e) => handleDropdownEnter(e)} onMouseLeave={(e) => handleDropdownLeave(e)}>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>
                             <a href='/1st-mgt'>1st mgt</a>
                         </li>
@@ -72,12 +77,16 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                             <p 
                                 id='girls-club-menu' 
                                 className='main-navigation-item' 
-                                onMouseEnter={(e) => handleDropdownEnter(e)} 
-                                onMouseLeave={(e) => handleDropdownLeave(e)}>girls club</p>
-                            <ul id='girls-club-dropdown' className='sub-items'>
-                               <li><a href='/girls-club/in-town'> In town </a></li>
-                               <li><a href='/girls-club/up-coming'>Upcoming</a></li>
-                               <li><a href='/girls-club/out-of-town'>Out of town</a></li>
+                                onMouseEnter={(e) => handleDropdownEnter(e)}
+                                onMouseLeave={(e) => handleDropdownLeave(e)}
+                                >girls club</p>
+                            <ul 
+                                id='girls-club-dropdown' className='sub-items'
+                                onMouseEnter={(e) => handleDropdownEnter(e)}
+                                onMouseLeave={(e) => handleDropdownLeave(e)}>
+                               <li><a className='girls-club-li' href='/girls-club/in-town'> In town </a></li>
+                               <li><a className='girls-club-li' href='/girls-club/up-coming'>Upcoming</a></li>
+                               <li><a className='girls-club-li' href='/girls-club/out-of-town'>Out of town</a></li>
                             </ul>
                         </li>
                         <li className='main-item-with-dropdown'
@@ -88,10 +97,15 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 className='main-navigation-item' 
                                 onMouseEnter={(e) => handleDropdownEnter(e)} 
                                 onMouseLeave={(e) => handleDropdownLeave(e)}>boys squad</p>
-                            <ul id='boys-squad-dropdown' className='sub-items'>
-                               <li><a href='/boys-squad/in-town'> In town </a></li>
-                               <li><a href='/boys-squad/up-coming'> Upcoming </a></li>
-                               <li><a href='/boys-squad/out-of-town'>Out of town</a></li> 
+                            <ul 
+                                id='boys-squad-dropdown' 
+                                className='sub-items'
+                                onMouseEnter={(e) => handleDropdownEnter(e)} 
+                                onMouseLeave={(e) => handleDropdownLeave(e)}
+                            >
+                               <li><a className='boys-squad-li' href='/boys-squad/in-town'> In town </a></li>
+                               <li><a className='boys-squad-li' href='/boys-squad/up-coming'> Upcoming </a></li>
+                               <li><a className='boys-squad-li' href='/boys-squad/out-of-town'>Out of town</a></li> 
                             </ul>
                         </li>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>
