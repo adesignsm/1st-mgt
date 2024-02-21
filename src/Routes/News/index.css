@@ -93,3 +93,9 @@
         }
     }
 }
+
+#hover-thumbnail {
+    position: absolute;
+    z-index: 10;
+    transform: scale(0.7);
+}

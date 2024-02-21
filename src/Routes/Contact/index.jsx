@@ -10,6 +10,7 @@ const Contact = () => {
     const [creativePrData, setCreativePrData] = useState([]);
     const [additionalData, setAdditionalData] = useState([]);
     const [mapData, setMapData] = useState([]);
+    const [addressData, setAddressData] = useState([]);
 
     const fetchData = async () => {
         try {
@@ -32,10 +33,11 @@ const Contact = () => {
             setCreativePrData(data[0].creativeAndPrContact);
             setAdditionalData(data[0].additionalInfo[0]);
             setMapData(data[0].mapSection);
+            setAddressData(data[0].mapSection.address);
         }
     }, [data]);
 
-    // console.log(mapData)
+    console.log(addressData[0].enAddress[0].children[0].text)
 
     return (
         <>
@@ -245,6 +247,18 @@ const Contact = () => {
                     <div className='map'>
                         {mapData && mapData.mapIframe && (
                             <div className='iframe-container' dangerouslySetInnerHTML={{ __html: mapData.mapIframe }} />
+                        )}
+                    </div>
+                    <div className='addresses'>
+                        {mapData && mapData.address && (
+                            <>
+                                <h3 className='address'>
+                                    {addressData[0].enAddress[0].children[0].text}
+                                </h3>
+                                <h3 className='address' style={{fontWeight: 'lighter'}}>
+                                    {addressData[0].krAddress[0].children[0].text}
+                                </h3>
+                            </>
                         )}
                     </div>
                 </div>

@@ -12,8 +12,15 @@ const News = () => {
     const [postTitle, setPostTitle] = useState('');
     const [postDetails, setPostDetails] = useState([]);
     const [postMedia, setPostMedia] = useState([]);
+    const [postThumb, setPostThumb] = useState([]);
     const [imageIndex, setImageIndex] = useState(null);
     const [showViewAll, setShowViewAll] = useState(false);
+    const [modelData, setModelData] = useState([]);
+    const [showThumb, setShowThumb] = useState(false);
+    const [thumbPos, setThumbPos] = useState({
+        x: 0,
+        y: 0,
+    });
 
     const builder = ImageUrlBuilder(sanityClient);
     const urlFor = (source) => {
@@ -30,6 +37,16 @@ const News = () => {
         }
     };
 
+    const fetchModelData = async () => {
+        try {
+            const query = `*[_type == 'girlsClubModels' || _type == 'boysSquadModels']`;
+            const result = await sanityClient.fetch(query);
+            setModelData(result);
+        } catch (error) {   
+            console.error(error);
+        }
+    }
+
     const handleViewAllClick = () => {
         setShowViewAll(!showViewAll);
     }
@@ -45,6 +62,20 @@ const News = () => {
         });
 
         setShowViewAll(false);
+    }
+
+    const handleMouseMove = (e) => {
+        setThumbPos({ x: e.clientX, y: e.clientY });
+    };
+
+    const handlePostHover = (e) => {
+        let handle = e.target.innerText;
+        postData.forEach((post) => {
+            if (handle === post.postTitle.toUpperCase()) {
+                setPostThumb(urlFor(post.postThumb.asset._ref).url());
+                setShowThumb(true);
+            }
+        });
     }
 
     const handleImageClick = (e) => {
@@ -64,9 +95,37 @@ const News = () => {
             </video>
         );
     }
+
+    const modelPageChecker = (modelLink, index) => {
+        const model = modelData.find(model => model.modelName === modelLink);
+
+        if (model) {
+            if (model._type === 'boysSquadModels') {
+                return (
+                    <li key={index}>
+                        <a href={`/boys-squad/${modelLink}`}>
+                            {model.modelName}
+                        </a>
+                    </li>
+                );
+            } else if (model._type === 'girlsClubModels') {
+                return (
+                    <li key={index}>
+                        <a href={`/girls-club/${modelLink}`}>
+                            {model.modelName}
+                        </a>
+                    </li>
+                );
+            }
+        }
+        return (
+            <li key={index}>{modelLink}</li>
+        );
+    };
     
     useEffect(() => {
         fetchData();
+        fetchModelData();
 
         $(".right-column").draggable({disabled: true});
         $("#post-gallery").draggable({
@@ -101,6 +160,14 @@ const News = () => {
         })
     }, [postData]);
 
+    useEffect(() => {
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+          window.removeEventListener('mousemove', handleMouseMove);
+        }
+    }, []);
+
     return (
         <>
             <main className='news-page'>
@@ -110,7 +177,7 @@ const News = () => {
                         <ul>
                             {Object.keys(postDetails).map((detail) => {
                                 return postDetails[detail].map((model, index) => {
-                                    return <li key={index}>{model}</li>;
+                                    return modelPageChecker(model, index)
                                 });
                             })}
                         </ul>
@@ -118,12 +185,29 @@ const News = () => {
                 </div>
                 <div className='right-column'>
                     <div className='view-all-container'>
+                        {showThumb && (
+                            <img 
+                                id='hover-thumbnail' 
+                                src={postThumb}
+                                style={{
+                                    top: thumbPos.y - 200,
+                                    left: thumbPos.x - 300,
+                                }}
+                            />
+                        )}
                         <button id='view-all-button' onClick={handleViewAllClick}>View All</button>
                         <ul className={`view-all-list ${showViewAll ? 'active' : ''}`}>
                             {postData && (
                                 postData.map((post, index) => {
                                     return (
-                                        <li key={index} onClick={(e) => handlePostClick(e)}>{post.postTitle}</li>
+                                        <li 
+                                            key={index} 
+                                            onClick={(e) => handlePostClick(e)}
+                                            onMouseEnter={(e) => handlePostHover(e)}
+                                            onMouseLeave={() => setShowThumb(false)}
+                                        >
+                                            {post.postTitle}
+                                        </li>
                                     )
                                 })
                             )}

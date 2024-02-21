@@ -243,7 +243,35 @@ export default {
               title: 'Map Embed Link',
               type: 'string',
               description: 'Please copy and paste the google maps iframe embed here. Please make sure that the custom size is set to: 1920 x 500',
-            }
+            },
+            {
+              name: 'address',
+              type: 'array',
+              title: 'Address',
+              description: 'Please enter both English & Korean addresses.',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'enAddress',
+                      title: 'English Address',
+                      type: 'array',
+                      of: [{ type: 'block'}]
+                    },
+                    {
+                      name: 'krAddress',
+                      title: 'Korean Address',
+                      type: 'array',
+                      of: [{ type: 'block'}]
+                    },
+                  ]
+                }
+              ],
+              options: {
+                layout: 'default'
+              },  
+            },
           ]
         }
     ]
