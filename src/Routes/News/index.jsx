@@ -191,7 +191,7 @@ const News = () => {
                                 src={postThumb}
                                 style={{
                                     top: thumbPos.y - 200,
-                                    left: thumbPos.x - 300,
+                                    left: thumbPos.x - 400,
                                 }}
                             />
                         )}
