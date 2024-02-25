@@ -166,3 +166,84 @@
     display: flex;
     gap: 10px;
 }
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    .first-mgt-page {
+        flex-direction: column;
+    }
+
+    .first-mgt-page .column-one {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .first-mgt-page .column-two {
+        margin-top: 2rem;
+    }
+
+    .first-mgt-page .column-two img {
+        width: 90%;
+    }
+
+    .first-mgt-instagram {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .first-mgt-instagram .copy-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: fit-content;
+        min-width:fit-content;
+    }
+
+    .first-mgt-instagram .instagram-container {
+        width: 100%;
+        transform: scale(1);
+    }
+
+    .first-mgt-instagram .instagram-container .instagram-grid {
+        flex-direction: column;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .first-mgt-instagram .instagram-container .instagram-grid a {
+        width: 100%;
+        height: 300px;
+    }
+
+    .first-mgt-instagram .tags-container {
+        margin-top: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .naughty-boys-dream-girls-instagram .instagram-feed-container {
+        flex-direction: column;
+    }
+
+    .naughty-boys-dream-girls-instagram .instagram-feed-container .instagram-container {
+        width: 100%;
+    }
+
+    .naughty-boys-dream-girls-instagram .copy-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .projects-and-clients {
+        margin-top: 5rem !important;
+        flex-direction: column;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .projects-and-clients .projects-column .media {
+        flex-direction: column;
+    }
+
+    .projects-and-clients .clients-column .media {
+        flex-direction: column;
+    }
+}
