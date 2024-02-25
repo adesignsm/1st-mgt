@@ -56,10 +56,6 @@
     flex-direction: column;
 }
 
-.additional-info-container .content {
-    margin-bottom: 4rem;
-}
-
 .additional-info-container h4 {
     font-family: 'Hemi Head';
     font-weight: normal;
@@ -109,4 +105,27 @@
 .map-section .map .iframe-container iframe {
     display: flex;
     width: 100%;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    .contact-page {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .contact-page .additional-info-container {
+        margin-top: 5rem;
+    }
+
+    .contact-page .additional-info-container h4 {
+        margin-bottom: 1rem;
+    }
+
+    .contact-page .map-section .phone-numbers {
+        margin-bottom: 5rem;
+    }
+
+    .contact-page .map-section .phone-numbers h4 {
+        gap: unset;
+    }
 }
