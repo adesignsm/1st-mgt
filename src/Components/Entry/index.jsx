@@ -7,11 +7,11 @@ import ENTRY_GIF from '../../Assets/Logos/entry_gif.gif';
 const Entry = () => {
     const [hideEntry, setHideEntry] = useState(false);
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setHideEntry(true);
-    //     }, 3000);
-    // }, [hideEntry]);
+    useEffect(() => {
+        setTimeout(() => {
+            setHideEntry(true);
+        }, 3000);
+    }, [hideEntry]);
 
     const handleClick = () => {
         setHideEntry(true);

@@ -10,6 +10,7 @@ import DEFAULT_IMAGE_5 from '../../Assets/DefaultHomePageMedia/5.jpg';
 
 const Menu = ({ menuOpen, updateMenuOpen }) => {
     const [isHome, setIsHome] = useState(null);
+    const [width] = useState(window.innerWidth);
 
     useEffect(() => {
         const homePath = 'http://localhost:3000/';
@@ -60,6 +61,29 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
         }
     }
 
+    const handleDropdownClick = (e) => {
+        const girlsClubDropDown = document.getElementById('girls-club-dropdown');
+        const boysSquadDropDown = document.getElementById('boys-squad-dropdown');
+
+        if (e.target.id === 'girls-club-menu') {
+            boysSquadDropDown.classList.remove('mobile-dropdown-show');
+
+            if (girlsClubDropDown.classList.contains('mobile-dropdown-show')) {
+                girlsClubDropDown.classList.remove('mobile-dropdown-show');
+            } else {
+                girlsClubDropDown.classList.add('mobile-dropdown-show');
+            }
+        } else if (e.target.id === 'boys-squad-menu') {
+            girlsClubDropDown.classList.remove('mobile-dropdown-show');
+
+            if (boysSquadDropDown.classList.contains('mobile-dropdown-show')) {
+                boysSquadDropDown.classList.remove('mobile-dropdown-show');
+            } else {
+                boysSquadDropDown.classList.add('mobile-dropdown-show');
+            }
+        }
+    }
+
     return (
         <>
             <nav className={`navigation 
@@ -79,6 +103,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 className='main-navigation-item' 
                                 onMouseEnter={(e) => handleDropdownEnter(e)}
                                 onMouseLeave={(e) => handleDropdownLeave(e)}
+                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : ''}
                                 >girls club</p>
                             <ul 
                                 id='girls-club-dropdown' className='sub-items'
@@ -96,7 +121,9 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 id='boys-squad-menu' 
                                 className='main-navigation-item' 
                                 onMouseEnter={(e) => handleDropdownEnter(e)} 
-                                onMouseLeave={(e) => handleDropdownLeave(e)}>boys squad</p>
+                                onMouseLeave={(e) => handleDropdownLeave(e)}
+                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : ''}
+                            >boys squad</p>
                             <ul 
                                 id='boys-squad-dropdown' 
                                 className='sub-items'
