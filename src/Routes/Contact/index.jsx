@@ -37,8 +37,6 @@ const Contact = () => {
         }
     }, [data]);
 
-    console.log(addressData[0].enAddress[0].children[0].text)
-
     return (
         <>
             <main className='contact-page'>
@@ -250,7 +248,7 @@ const Contact = () => {
                         )}
                     </div>
                     <div className='addresses'>
-                        {mapData && mapData.address && (
+                        {mapData && mapData.address && addressData[0] && (
                             <>
                                 <h3 className='address'>
                                     {addressData[0].enAddress[0].children[0].text}
