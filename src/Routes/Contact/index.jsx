@@ -37,8 +37,6 @@ const Contact = () => {
         }
     }, [data]);
 
-    console.log(addressData[0].enAddress[0].children[0].text)
-
     return (
         <>
             <main className='contact-page'>
