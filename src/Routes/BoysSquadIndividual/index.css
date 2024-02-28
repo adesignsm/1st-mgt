@@ -76,3 +76,56 @@
     object-fit: contain;
     cursor: pointer;
 }
+
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    
+
+
+    .boysSquad-individual-page .model-collage h1 {
+visibility: hidden;
+    }
+    
+    .boysSquad-individual-page .hero .right-column {
+        visibility: hidden;
+    }
+    .boysSquad-individual-page .hero .left-column h1 {
+        font-size: 2em;
+    }
+    .boysSquad-individual-page .hero .left-column ul > li {
+        font-size: 1em;
+    }
+    .boysSquad-individual-page .hero .left-column {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        height: 50vh;
+        font-family: 'Hemi Head';
+        text-transform: uppercase;
+        padding-left: 8rem;
+        margin-top: 4rem;
+    
+    }
+    
+
+    .boysSquad-individual-page .model-collage {
+        height: auto;
+        width: 90vw;
+        margin-top: -25%;
+    }
+
+    .boysSquad-individual-page .model-collage .collage img {
+        min-width: 30%;
+        width: 300px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+    .boysSquad-individual-page .model-collage .collage video {
+        min-width: 30%;
+        width: 300px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+}
