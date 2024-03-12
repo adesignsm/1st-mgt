@@ -31,7 +31,6 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
     }
 
     const handleDropdownLeave = (e) => {
-        console.log(e.target)
         if (e.target.id !== 'girls-club-menu') {
             document.getElementById('girls-club-dropdown').classList.remove('show');
         }
