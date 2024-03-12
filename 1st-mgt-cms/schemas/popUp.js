@@ -33,6 +33,24 @@ export default {
                     description: 'The text for the heading title.'
                 },
                 {
+                    name: 'bannerSize',
+                    title: 'Banner Size',
+                    description: 'Please be advised these values will be applied as percentages for responsive layout reasons.',
+                    type: 'object',
+                    fields: [
+                        {
+                            name: 'height',
+                            title: 'Height',
+                            type: 'number'
+                        },
+                        {
+                            name: 'width',
+                            title: 'Width',
+                            type: 'number'
+                        }
+                    ]
+                },
+                {
                     name: 'enterButtonText',
                     type: 'object',
                     title: '"Click for more button" Settings',

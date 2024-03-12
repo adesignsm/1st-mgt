@@ -43,6 +43,7 @@
 .popup-entry-container a {
     font-family: 'Hemi Head';
     text-transform: uppercase;
+    width: fit-content;
 }
 
 .popup-close-button {
