@@ -1,8 +1,13 @@
 .girlsclub-outoftown-page {
     height: 100%;
-    width: 100vw;
+    width: 100%;
     margin-top: 15vh;
     font-family: 'Hemi Head';
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d9d9d9",GradientType=1);
 }
 
 .girlsclub-outoftown-page .title-row {
