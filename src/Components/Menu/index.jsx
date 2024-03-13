@@ -109,7 +109,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 onMouseEnter={(e) => handleDropdownEnter(e)}
                                 onMouseLeave={(e) => handleDropdownLeave(e)}>
                                <li><a className='girls-club-li' href='/girls-club/in-town'> In town </a></li>
-                               <li><a className='girls-club-li' href='/girls-club/up-coming'>Upcoming</a></li>
+                               <li><a className='girls-club-li' href='/girls-club/upcoming'>Upcoming</a></li>
                                <li><a className='girls-club-li' href='/girls-club/out-of-town'>Out of town</a></li>
                             </ul>
                         </li>
@@ -130,7 +130,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 onMouseLeave={(e) => handleDropdownLeave(e)}
                             >
                                <li><a className='boys-squad-li' href='/boys-squad/in-town'> In town </a></li>
-                               <li><a className='boys-squad-li' href='/boys-squad/up-coming'> Upcoming </a></li>
+                               <li><a className='boys-squad-li' href='/boys-squad/upcoming'> Upcoming </a></li>
                                <li><a className='boys-squad-li' href='/boys-squad/out-of-town'>Out of town</a></li> 
                             </ul>
                         </li>
