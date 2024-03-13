@@ -11,10 +11,14 @@ export default {
             description: 'This is the title for this component. *Note: This is important if you have a lot of components.'
         },
         {
-            name: 'subTitle',
-            type: 'string',
-            title: 'Sub Title for Out Of Town',
-            description: 'Sub Title that will display to the right side of the Heading.'
+            name: 'navigation',
+            type: 'array',
+            title: 'Navigation',
+            description: '*NOTE The first item in this navigation list should match tha page title. E.g: In the Upcoming page the first item in the list will be "Upcoming"',
+            of: [{
+                title: 'Navigation Item',
+                type: 'string'
+            }]
         },
         {
             name: 'breadcrumb',

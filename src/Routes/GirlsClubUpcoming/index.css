@@ -24,6 +24,26 @@
     width: 60vw;
 }
 
+.girlsclub-upcoming-page .title-row .column-one ul {
+    position: absolute;
+    margin-left: 25rem;
+    list-style: none;
+}
+
+.girlsclub-upcoming-page .title-row .column-one ul a {
+    font-size: xx-large;
+}
+
+.girlsclub-upcoming-page .title-row .column-one ul li {
+    transition: all .3s ease;
+}
+
+.girlsclub-upcoming-page .title-row .column-one ul li.hide {
+    opacity: 0;
+    pointer-events: none;
+    margin-top: -.5rem;
+}
+
 .girlsclub-upcoming-page .title-row .column-one h1 {
     font-size: 4em;
     margin: 0;
