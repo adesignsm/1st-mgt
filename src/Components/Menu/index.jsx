@@ -102,7 +102,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 className='main-navigation-item' 
                                 onMouseEnter={(e) => handleDropdownEnter(e)}
                                 onMouseLeave={(e) => handleDropdownLeave(e)}
-                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : ''}
+                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : null}
                                 >girls club</p>
                             <ul 
                                 id='girls-club-dropdown' className='sub-items'
@@ -121,7 +121,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 className='main-navigation-item' 
                                 onMouseEnter={(e) => handleDropdownEnter(e)} 
                                 onMouseLeave={(e) => handleDropdownLeave(e)}
-                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : ''}
+                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : null}
                             >boys squad</p>
                             <ul 
                                 id='boys-squad-dropdown' 
