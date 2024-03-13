@@ -37,7 +37,7 @@ const App = () => {
                     <Route path='/girls-club/:model' element={<GirlsClubIndividual />} />
                     <Route path='/boys-squad/in-town' element={<BoysSquadInTown />} />
                     <Route path='/boys-squad/out-of-town' element={<BoysSquadOutOfTown />} />
-                    <Route path='/boys-squad/up-coming' element={<BoysSquadUpcoming />} />
+                    <Route path='/boys-squad/upcoming' element={<BoysSquadUpcoming />} />
                     <Route path='/boys-squad/:model' element={<BoysSquadIndividual />} />
                 </Routes>
             </BrowserRouter>

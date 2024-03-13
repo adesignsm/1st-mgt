@@ -11,6 +11,35 @@ export default {
             description: 'Name of the model'
         },
         {
+            name: 'links',
+            title: 'External Links',
+            type: 'object',
+            fields: [
+                {
+                    name: 'instagramLink',
+                    title: 'Instagram Link',
+                    type: 'url'
+                },
+                {
+                    name: 'modelsWidget',
+                    title: 'Models Widget',
+                    type: 'object',
+                    fields: [
+                        {
+                            name: 'link',
+                            title: 'Link',
+                            type: 'url'
+                        },
+                        {
+                            name: 'icon',
+                            title: 'Iocn',
+                            type: 'image'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             name: 'status',
             type: 'string',
             title: 'Model Status',

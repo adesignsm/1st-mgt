@@ -33,6 +33,7 @@ const BoysSquadIndividual = () => {
         try {
             const query = `*[_type == 'boysSquadModels' && defined(modelStats) && defined(modelPictures)] {
                 modelName,
+                links,
                 modelStats,
                 modelPictures,
                 modelLightbox,
@@ -86,6 +87,17 @@ const BoysSquadIndividual = () => {
                         {modelData && (
                             <>
                                 <h1>{modelData.modelName}</h1>
+                                <h2>
+                                    <a href={modelData.links
+                                        ? modelData.links.instagramLink 
+                                        : 'https://www.instagram.com' 
+                                    }>
+                                        {modelData.links 
+                                            ? `@${modelData.links.instagramLink.split('/').filter(part => part !== "")[2]}`
+                                            : ''
+                                        }
+                                    </a>
+                                </h2>
                                 <ul className="model-stats-list">
                                     {Object.keys(modelStats).length > 0 && (
                                         <>
@@ -138,6 +150,11 @@ const BoysSquadIndividual = () => {
                         )}
                     </div>
                     <div className="right-column">
+                        {modelData.links !== null && modelData.links !== undefined && modelData.links.modelsWidget && (
+                            <a href={modelData.links.modelsWidget.link} className="models-widget-icon">
+                                <img src={urlFor(modelData.links.modelsWidget.icon.asset._ref).url()} />
+                            </a>
+                        )}
                         {Object.keys(modelImageContent).length > 0 && (
                             <img className="hero-image" src={urlFor(modelImageContent[0].asset._ref).url()} />
                         )}
