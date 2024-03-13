@@ -13,6 +13,9 @@ const GirlsClubIndividual = () => {
     const [modelImageContent, setModelImageContent] = useState([]);
     const [modelFileContent, setModelFileContent] = useState([]);
     const [imageIndex, setImageIndex] = useState(null);
+    const [settings, setSettings] = useState({
+        collageGap: 5
+    });
 
     const builder = ImageUrlBuilder(sanityClient);
 
@@ -28,6 +31,22 @@ const GirlsClubIndividual = () => {
         
         setUrlSuffix(decodedSuffix);
     }, []);
+
+    const fetchSettingss = async () => {
+        try {
+            const query = `*[_type == 'settings'][0]`; 
+            const result = await sanityClient.fetch(query);
+
+            if (result && result.individualModelPageSettings_girls) {
+                setSettings(prevSettings => ({
+                    ...prevSettings,
+                    collageGap: result.individualModelPageSettings_girls.collageGap,
+                }))
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const fetchModelData = async () => {
         try {
@@ -56,6 +75,7 @@ const GirlsClubIndividual = () => {
     useEffect(() => {
         if (urlSuffix) {
             fetchModelData();
+            fetchSettingss();
         }
     }, [urlSuffix]);
 
@@ -76,8 +96,6 @@ const GirlsClubIndividual = () => {
             </video>
         );
     }
-
-    console.log(modelData.links)
 
     return (
         <>
@@ -165,7 +183,10 @@ const GirlsClubIndividual = () => {
                 </div>
                 <div className="model-collage">
                     <h1>{modelData.modelName}</h1>
-                    <div className="collage">
+                    <div 
+                        className="collage"
+                        style={{gap: `${settings ? settings.collageGap : 5}px`}}
+                    >
                         {modelImageContent !== undefined && (Object.keys(modelImageContent).length > 0) && (
                             Object.values(modelImageContent).map((content, index) => {
                                 return (

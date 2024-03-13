@@ -19,7 +19,11 @@ import boysSquadInTown from "./boysSquadInTown"
 import boysSquadOutOfTown from "./boysSquadOutOfTown"
 import boysSquadUpComing from "./boysSquadUpComing"
 
+/*settings */
+import settings from "./settings"
+
 export const schemaTypes = [
+    settings,
     popUp,
     firstMgt,
     instagram,
