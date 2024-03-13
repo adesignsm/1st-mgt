@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import sanityClient from '../../client';
+import ImageUrlBuilder from '@sanity/image-url';
 
 import './index.css';
 
@@ -11,6 +12,12 @@ const Contact = () => {
     const [additionalData, setAdditionalData] = useState([]);
     const [mapData, setMapData] = useState([]);
     const [addressData, setAddressData] = useState([]);
+
+    const builder = ImageUrlBuilder(sanityClient);
+
+    const urlFor = (source) => {
+      return builder.image(source);
+    }
 
     const fetchData = async () => {
         try {
@@ -176,6 +183,13 @@ const Contact = () => {
                     </div>
                 </div>
                 <div className='additional-info-container'>
+                    <div className='models-content'>
+                        {additionalData.modelsIcon && (
+                            <a href={additionalData.modelsIcon.link}>
+                                <img src={urlFor(additionalData.modelsIcon.image.asset._ref).url()} />
+                            </a>
+                        )}
+                    </div>
                     <div className='content'>
                         {additionalData.enText && (
                             <h4>
@@ -229,15 +243,17 @@ const Contact = () => {
                         {mapData && mapData.phoneNumbers && mapData.phoneNumbers[0].krText && (
                             <h4>
                                 {mapData.phoneNumbers[0].krText[0].children.map((child) => {
-                                    if (child.text === mapData.phoneNumbers[0].krText[0].markDefs[0].href) {
+                                    console.log(child.text)
+                                    if (mapData.phoneNumbers[0].krText[0].markDefs[0] !== undefined 
+                                        && child.text === mapData.phoneNumbers[0].krText[0].markDefs[0].href) {
                                         return (
                                           <a href={`tel:${child.text}`} key={child._key}>
                                             {child.text}
                                           </a>
                                         );
-                                      } else {
+                                    } else {
                                         return child.text;
-                                      }
+                                    }
                                 })}
                             </h4>
                         )}

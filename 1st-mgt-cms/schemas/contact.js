@@ -184,6 +184,23 @@ export default {
               type: 'object',
               fields: [
                 {
+                  name: 'modelsIcon',
+                  type: 'object',
+                  title: 'Models.com Field',
+                  fields: [
+                    {
+                      name: 'image',
+                      title: 'Upload the Models.com image',
+                      type: 'image'
+                    },
+                    {
+                      name: 'link',
+                      title: 'Add a link to this icon',
+                      type: 'url'
+                    }
+                  ]
+                },
+                {
                   name: 'enText',
                   title: 'English Text',
                   type: 'array',

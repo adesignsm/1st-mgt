@@ -50,10 +50,11 @@
 }
 
 .additional-info-container {
-    margin-top: 10rem;
+    margin-top: 20rem;
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+    gap: 50px;
 }
 
 .additional-info-container h4 {
@@ -66,6 +67,14 @@
 
 .additional-info-container a {
     text-transform: lowercase;
+}
+
+.additional-info-container .models-content {
+    max-width: 200px;
+}
+
+.additional-info-container .models-content img {
+    width: 100%;
 }
 
 .map-section {
@@ -85,7 +94,8 @@
 }
 
 .map-section .phone-numbers h4 {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 50px;
     margin-bottom: 0;
     margin-top: 0;
@@ -94,7 +104,7 @@
 }
   
 .map-section .phone-numbers a {
-    width: 200px;
+    width: 150px;
     text-align: end;
 }
 
