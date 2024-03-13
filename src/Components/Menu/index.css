@@ -14,6 +14,14 @@
     z-index: 10;
 }
 
+.transparent {
+    background-color: transparent;
+}
+
+.gradient {
+    background: linear-gradient(to right, rgba(217, 217, 217, 0.9), rgba(247, 207, 225, 0.95));
+}
+
 .navigation .left-column {
     display: flex;
     flex-direction: column;
@@ -35,9 +43,10 @@
 }
 
 .navigation ul:nth-child(1) .main-navigation-item:hover {
-    background: -webkit-linear-gradient(#d9d9d9, #F7CFE1);
+    /* background: -webkit-linear-gradient(#d9d9d9, #F7CFE1);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
+    opacity: 0.6;
 }
 
 .navigation ul:nth-child(2) li {
@@ -46,9 +55,10 @@
 }
 
 .navigation ul:nth-child(2) li:hover {
-    background: -webkit-linear-gradient(#eee, #333);
+    /* background: -webkit-linear-gradient(#eee, #333);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
+    opacity: 0.6;
 }
 
 .navigation ul:nth-child(1) li,
@@ -97,6 +107,7 @@
 
 .close-menu {
     cursor: pointer;
+    filter: invert(1);
 }
 
 .showClose {
@@ -124,4 +135,53 @@
     left: 0;
     opacity: 1;
     transition: all .3s ease;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    .navigation {
+        flex-direction: column;
+        margin-top: 5rem;
+    }
+
+    .navigation .right-column {
+        align-items: flex-start;
+    }
+
+    .navigation .left-column .main-navigation {
+        margin-bottom: 2.5rem;
+    }
+
+    .navigation .left-column .main-navigation li {
+        font-size: 0.5em;
+    }
+
+    .navigation .left-column .main-navigation p {
+        width: 100%;
+    }
+
+    .navigation .main-item-with-dropdown {
+        flex-direction: column;
+    }
+
+    .navigation .sub-items {
+        position: relative;
+        z-index: 0;
+        flex-direction: column;
+        font-size: xx-large !important;
+        opacity: 0;
+        height: 0;
+        pointer-events: none;
+        transition: all .3s ease-in-out;
+    }
+
+    .navigation .sub-items li {
+        margin-bottom: .5rem;
+    }
+
+    .mobile-dropdown-show {
+        opacity: 1 !important;
+        height: fit-content !important;
+        pointer-events: all !important;
+        margin-bottom: 1rem !important;
+    }
 }

@@ -29,6 +29,12 @@ export default {
             ]
         },
         {
+            name: 'postThumb',
+            title: 'Post Thumbnail',
+            description: 'The thumbnail image that appears when hovering over the list item.',
+            type: 'image',
+        },
+        {
             name: 'postMedia',
             title: 'Post Media',
             type: 'array',

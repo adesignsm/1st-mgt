@@ -24,6 +24,26 @@
     width: 60vw;
 }
 
+.boysSquad-outoftown-page .title-row .column-one ul {
+    position: absolute;
+    margin-left: 25rem;
+    list-style: none;
+}
+
+.boysSquad-outoftown-page .title-row .column-one ul a {
+    font-size: xx-large;
+}
+
+.boysSquad-outoftown-page .title-row .column-one ul li {
+    transition: all .3s ease;
+}
+
+.boysSquad-outoftown-page .title-row .column-one ul li.hide {
+    opacity: 0;
+    pointer-events: none;
+    margin-top: -.5rem;
+}
+
 .boysSquad-outoftown-page .title-row .column-one h1 {
     font-size: 4em;
     margin: 0;
@@ -54,4 +74,35 @@
 .boysSquad-outoftown-page .models-grid .model-cell h2 {
     width: 100%;
     text-transform: uppercase;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    
+    .boysSquad-outoftown-page .title-row {
+       
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: first baseline;
+        width: 80vw;
+        margin: 0 auto;
+        padding-bottom: 1rem;
+    }
+    
+    .boysSquad-outoftown-page .title-row .column-one {
+       
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-transform: uppercase;
+        max-width: 600px;
+        width: 60vw;
+    }
+
+    .boysSquad-outoftown-page .models-grid .model-cell {
+        max-width: 100%;
+        text-align: center;
+       
+    }
+    
+
 }

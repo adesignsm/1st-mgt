@@ -1,6 +1,7 @@
 /*components */
 import popUp from "./popUp"
 import newsPosts from "./newsPosts"
+import instagram from "./instagram"
 
 /*main routes */
 import firstMgt from "./firstMgt"
@@ -18,16 +19,20 @@ import boysSquadInTown from "./boysSquadInTown"
 import boysSquadOutOfTown from "./boysSquadOutOfTown"
 import boysSquadUpComing from "./boysSquadUpComing"
 
+/*settings */
+import settings from "./settings"
+
 export const schemaTypes = [
+    settings,
     popUp,
     firstMgt,
+    instagram,
     newsPosts,
     contact,
     girlsClubModels,
     girlsClubInTown,
     girlsClubOutOfTown,
     girlsClubUpcoming,
-
     boysSquadModels,
     boysSquadInTown,
     boysSquadOutOfTown,

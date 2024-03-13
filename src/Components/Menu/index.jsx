@@ -10,6 +10,7 @@ import DEFAULT_IMAGE_5 from '../../Assets/DefaultHomePageMedia/5.jpg';
 
 const Menu = ({ menuOpen, updateMenuOpen }) => {
     const [isHome, setIsHome] = useState(null);
+    const [width] = useState(window.innerWidth);
 
     useEffect(() => {
         const homePath = 'http://localhost:3000/';
@@ -19,11 +20,23 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
          : setIsHome(false);
     }, [isHome]);
 
-    const handleDropdownToggle = (e) => {
-        if (e.target.classList.contains('main-navigation-item') && !e.target.nextSibling.classList.contains('show')) {
-            e.target.nextSibling.classList.add('show');
-        } else if (e.target.classList.contains('main-navigation-item') && e.target.nextSibling.classList.contains('show')) {
-            e.target.nextSibling.classList.remove('show');
+    const handleDropdownEnter = (e) => {
+        if (e.target.id === 'girls-club-menu' || e.target.classList.contains('girls-club-li')) {
+            document.getElementById('girls-club-dropdown').classList.add('show');
+        }
+        
+        if (e.target.id === 'boys-squad-menu' || e.target.classList.contains('boys-squad-li')) {
+            document.getElementById('boys-squad-dropdown').classList.add('show');
+        }
+    }
+
+    const handleDropdownLeave = (e) => {
+        if (e.target.id !== 'girls-club-menu') {
+            document.getElementById('girls-club-dropdown').classList.remove('show');
+        }
+        
+        if (e.target.id !== 'boys-squad-menu') {
+            document.getElementById('boys-squad-dropdown').classList.remove('show');
         }
     }
 
@@ -47,42 +60,78 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
         }
     }
 
+    const handleDropdownClick = (e) => {
+        const girlsClubDropDown = document.getElementById('girls-club-dropdown');
+        const boysSquadDropDown = document.getElementById('boys-squad-dropdown');
+
+        if (e.target.id === 'girls-club-menu') {
+            boysSquadDropDown.classList.remove('mobile-dropdown-show');
+
+            if (girlsClubDropDown.classList.contains('mobile-dropdown-show')) {
+                girlsClubDropDown.classList.remove('mobile-dropdown-show');
+            } else {
+                girlsClubDropDown.classList.add('mobile-dropdown-show');
+            }
+        } else if (e.target.id === 'boys-squad-menu') {
+            girlsClubDropDown.classList.remove('mobile-dropdown-show');
+
+            if (boysSquadDropDown.classList.contains('mobile-dropdown-show')) {
+                boysSquadDropDown.classList.remove('mobile-dropdown-show');
+            } else {
+                boysSquadDropDown.classList.add('mobile-dropdown-show');
+            }
+        }
+    }
+
     return (
         <>
-            <nav className={`navigation ${menuOpen ? 'showMenu' : 'hideMenu'}`}>
+            <nav className={`navigation 
+                ${menuOpen ? 'showMenu' : 'hideMenu'}
+                ${isHome ? 'pink-bg' : 'gradient'}
+            `}>
                 <div className='left-column'>
-                    <ul className='main-navigation'>
+                    <ul className='main-navigation' onMouseEnter={(e) => handleDropdownEnter(e)} onMouseLeave={(e) => handleDropdownLeave(e)}>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>
                             <a href='/1st-mgt'>1st mgt</a>
                         </li>
-                        <li className='main-item-with-dropdown'
-                            onMouseEnter={(e) => {
-                                handleDropdownToggle(e);
-                                handleBackgroundImageChange(e);
-                            }}
-                            onMouseLeave={(e) => handleDropdownToggle(e)}
+                        <li className='main-item-with-dropdown' 
+                            onMouseEnter={(e) => {handleBackgroundImageChange(e)}}
                         >
-                            <p className='main-navigation-item'>
-                                girls club
-                            </p>
-                            <ul className='sub-items'>
-                               <li><a href='/girls-club/in-town'> In town </a></li>
-                               <li><a href='/girls-club/up-coming'>Upcoming</a></li>
-                               <li><a href='/girls-club/out-of-town'>Out of town</a></li>
+                            <p 
+                                id='girls-club-menu' 
+                                className='main-navigation-item' 
+                                onMouseEnter={(e) => handleDropdownEnter(e)}
+                                onMouseLeave={(e) => handleDropdownLeave(e)}
+                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : ''}
+                                >girls club</p>
+                            <ul 
+                                id='girls-club-dropdown' className='sub-items'
+                                onMouseEnter={(e) => handleDropdownEnter(e)}
+                                onMouseLeave={(e) => handleDropdownLeave(e)}>
+                               <li><a className='girls-club-li' href='/girls-club/in-town'> In town </a></li>
+                               <li><a className='girls-club-li' href='/girls-club/upcoming'>Upcoming</a></li>
+                               <li><a className='girls-club-li' href='/girls-club/out-of-town'>Out of town</a></li>
                             </ul>
                         </li>
                         <li className='main-item-with-dropdown'
-                            onMouseEnter={(e) => {
-                                handleDropdownToggle(e);
-                                handleBackgroundImageChange(e);
-                            }}
-                            onMouseLeave={(e) => handleDropdownToggle(e)}
+                            onMouseEnter={(e) => {handleBackgroundImageChange(e)}}
                         >
-                            <p className='main-navigation-item'>boys squad</p>
-                            <ul className='sub-items'>
-                               <li><a href='/boys-squad/in-town'> In town </a></li>
-                               <li><a href='/boys-squad/up-coming'> Upcoming </a></li>
-                               <li><a href='/boys-squad/out-of-town'>Out of town</a></li> 
+                            <p 
+                                id='boys-squad-menu' 
+                                className='main-navigation-item' 
+                                onMouseEnter={(e) => handleDropdownEnter(e)} 
+                                onMouseLeave={(e) => handleDropdownLeave(e)}
+                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : ''}
+                            >boys squad</p>
+                            <ul 
+                                id='boys-squad-dropdown' 
+                                className='sub-items'
+                                onMouseEnter={(e) => handleDropdownEnter(e)} 
+                                onMouseLeave={(e) => handleDropdownLeave(e)}
+                            >
+                               <li><a className='boys-squad-li' href='/boys-squad/in-town'> In town </a></li>
+                               <li><a className='boys-squad-li' href='/boys-squad/upcoming'> Upcoming </a></li>
+                               <li><a className='boys-squad-li' href='/boys-squad/out-of-town'>Out of town</a></li> 
                             </ul>
                         </li>
                         <li className='main-navigation-item' onMouseEnter={(e) => handleBackgroundImageChange(e)}>

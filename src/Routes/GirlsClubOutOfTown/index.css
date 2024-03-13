@@ -1,8 +1,13 @@
 .girlsclub-outoftown-page {
     height: 100%;
-    width: 100vw;
+    width: 100%;
     margin-top: 15vh;
     font-family: 'Hemi Head';
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d9d9d9",GradientType=1);
 }
 
 .girlsclub-outoftown-page .title-row {
@@ -22,6 +27,26 @@
     text-transform: uppercase;
     max-width: 600px;
     width: 60vw;
+}
+
+.girlsclub-outoftown-page .title-row .column-one ul {
+    position: absolute;
+    margin-left: 25rem;
+    list-style: none;
+}
+
+.girlsclub-outoftown-page .title-row .column-one ul a {
+    font-size: xx-large;
+}
+
+.girlsclub-outoftown-page .title-row .column-one ul li {
+    transition: all .3s ease;
+}
+
+.girlsclub-outoftown-page .title-row .column-one ul li.hide {
+    opacity: 0;
+    pointer-events: none;
+    margin-top: -.5rem;
 }
 
 .girlsclub-outoftown-page .title-row .column-one h1 {
@@ -54,4 +79,32 @@
 .girlsclub-outoftown-page .models-grid .model-cell h2 {
     width: 100%;
     text-transform: uppercase;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    
+    .girlsclub-outoftown-page .title-row {
+        
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: first baseline;
+        width: 80vw;
+        margin: 0 auto;
+        padding-bottom: 1rem;
+    }
+    .girlsclub-outoftown-page .title-row .column-one {
+  
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-transform: uppercase;
+        max-width: 600px;
+        width: 60vw;
+    }
+    .girlsclub-outoftown-page .models-grid .model-cell {
+        max-width: 100%;
+        text-align: center;
+       
+    }
+
 }

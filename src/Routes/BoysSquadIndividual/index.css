@@ -10,7 +10,7 @@
 .boysSquad-individual-page .hero .left-column {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 60%;
     height: 50vh;
     font-family: 'Hemi Head';
     text-transform: uppercase;
@@ -19,6 +19,7 @@
 
 .boysSquad-individual-page .hero .left-column h1 {
     font-size: 4em;
+    margin-bottom: 0;
 }
 
 .boysSquad-individual-page .hero .left-column ul {
@@ -29,6 +30,12 @@
 
 .boysSquad-individual-page .hero .left-column ul > li {
     font-size: 2em;
+    opacity: 0.9;
+}
+
+.boysSquad-individual-page .hero .left-column h2 {
+    text-transform: lowercase;
+    opacity: 0.9;
 }
 
 .boysSquad-individual-page .hero .right-column {
@@ -39,6 +46,20 @@
 .boysSquad-individual-page .hero .right-column img {
     object-fit: contain;
     width: 100%;
+}
+
+.boysSquad-individual-page .hero .right-column .models-widget-icon {
+    max-height: 100px;
+    max-width: 100px;
+    align-self: flex-end;
+}
+
+.boysSquad-individual-page {
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d9d9d9",GradientType=1);
 }
 
 .boysSquad-individual-page .model-collage {
@@ -75,4 +96,57 @@
     width: 500px;
     object-fit: contain;
     cursor: pointer;
+}
+
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    
+
+
+    .boysSquad-individual-page .model-collage h1 {
+visibility: hidden;
+    }
+    
+    .boysSquad-individual-page .hero .right-column {
+        visibility: hidden;
+    }
+    .boysSquad-individual-page .hero .left-column h1 {
+        font-size: 2em;
+    }
+    .boysSquad-individual-page .hero .left-column ul > li {
+        font-size: 1em;
+    }
+    .boysSquad-individual-page .hero .left-column {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        height: 50vh;
+        font-family: 'Hemi Head';
+        text-transform: uppercase;
+        padding-left: 8rem;
+        margin-top: 4rem;
+    
+    }
+    
+
+    .boysSquad-individual-page .model-collage {
+        height: auto;
+        width: 90vw;
+        margin-top: -25%;
+    }
+
+    .boysSquad-individual-page .model-collage .collage img {
+        min-width: 30%;
+        width: 300px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+    .boysSquad-individual-page .model-collage .collage video {
+        min-width: 30%;
+        width: 300px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
 }

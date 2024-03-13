@@ -68,6 +68,82 @@ export default {
                     type: 'image',
                 },
             ]
+        },
+        {
+            name: 'projectsColumn',
+            type: 'object',
+            title: 'The Projects Section',
+            description: 'Content for the Projects section that is below the Instagram section.',
+            fields: [
+                {
+                    title: 'Projects Section English Title',
+                    name: 'projectsEnTitle',
+                    type: 'string',
+                    description: 'The English title for the Projects Section'
+                },
+                {
+                    title: 'Projects Section Korean Title',
+                    name: 'projectsKrTitle',
+                    type: 'string',
+                    description: 'The Korean title for the Projects Section'
+                },
+                {
+                    name: 'projectsMedia',
+                    title: 'Project Media',
+                    type: 'array',
+                    description: 'You can add multiple project media peices here.',
+                    of: [
+                        {
+                            type: 'image',
+                            options: {
+                                hotspot: true
+                            }
+                        },
+                        {
+                            type: 'file',
+                            title: 'Video'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: 'clientsColumn',
+            type: 'object',
+            title: 'The Clients Section',
+            description: 'Content for the Clients section that is below the Instagram section.',
+            fields: [
+                {
+                    title: 'Clients Section English Title',
+                    name: 'clientsEnTitle',
+                    type: 'string',
+                    description: 'The English title for the Clients Section'
+                },
+                {
+                    title: 'Clients Section Korean Title',
+                    name: 'clientsKrTitle',
+                    type: 'string',
+                    description: 'The Korean title for the Clients Section'
+                },
+                {
+                    name: 'clientsMedia',
+                    title: 'Client Media',
+                    type: 'array',
+                    description: 'You can add multiple client media pieces here.',
+                    of: [
+                        {
+                            type: 'image',
+                            options: {
+                                hotspot: true
+                            }
+                        },
+                        {
+                            type: 'file',
+                            title: 'Video'
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

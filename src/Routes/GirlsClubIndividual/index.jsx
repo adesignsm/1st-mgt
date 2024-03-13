@@ -13,6 +13,9 @@ const GirlsClubIndividual = () => {
     const [modelImageContent, setModelImageContent] = useState([]);
     const [modelFileContent, setModelFileContent] = useState([]);
     const [imageIndex, setImageIndex] = useState(null);
+    const [settings, setSettings] = useState({
+        collageGap: 5
+    });
 
     const builder = ImageUrlBuilder(sanityClient);
 
@@ -29,10 +32,27 @@ const GirlsClubIndividual = () => {
         setUrlSuffix(decodedSuffix);
     }, []);
 
+    const fetchSettingss = async () => {
+        try {
+            const query = `*[_type == 'settings'][0]`; 
+            const result = await sanityClient.fetch(query);
+
+            if (result && result.individualModelPageSettings_girls) {
+                setSettings(prevSettings => ({
+                    ...prevSettings,
+                    collageGap: result.individualModelPageSettings_girls.collageGap,
+                }))
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     const fetchModelData = async () => {
         try {
             const query = `*[_type == 'girlsClubModels' && defined(modelStats) && defined(modelPictures)] {
                 modelName,
+                links,
                 modelStats,
                 modelPictures,
             }`;
@@ -50,11 +70,12 @@ const GirlsClubIndividual = () => {
         }
     };
 
-    console.log(modelImageContent)
+    // console.log(modelImageContent)
   
     useEffect(() => {
         if (urlSuffix) {
             fetchModelData();
+            fetchSettingss();
         }
     }, [urlSuffix]);
 
@@ -84,6 +105,17 @@ const GirlsClubIndividual = () => {
                         {modelData && (
                             <>
                                 <h1>{modelData.modelName}</h1>
+                                <h2>
+                                    <a href={modelData.links
+                                        ? modelData.links.instagramLink 
+                                        : 'https://www.instagram.com' 
+                                    }>
+                                        {modelData.links 
+                                            ? `@${modelData.links.instagramLink.split('/').filter(part => part !== "")[2]}`
+                                            : ''
+                                        }
+                                    </a>
+                                </h2>
                                 <ul className="model-stats-list">
                                     {Object.keys(modelStats).length > 0 && (
                                         <>
@@ -96,7 +128,7 @@ const GirlsClubIndividual = () => {
                                                 {modelStats.bust.unit === 'cm' ? 'cm' : 
                                                  modelStats.bust.unit === 'ft' ? 'ft' : 
                                                  modelStats.bust.unit === '"' ? '"' :
-                                                 modelStats.bust.unoutoftownwaiit === 'mm' ? 'mm' : 'Unknown'
+                                                 modelStats.bust.unit === 'mm' ? 'mm' : 'Unknown'
                                                 }
                                             </li>
                                             <li>
@@ -104,7 +136,7 @@ const GirlsClubIndividual = () => {
                                                 {modelStats.waist.unit === 'cm' ? 'cm' : 
                                                  modelStats.waist.unit === 'ft' ? 'ft' : 
                                                  modelStats.waist.unit === '"' ? '"' :
-                                                 modelStats.waist.unit === 'mm' ? 'mm' : 'Unknown'
+                                                 modelStats.waist.unit === 'MM' ? 'mm' : 'Unknown'
                                                 }
                                             </li>
                                             <li>
@@ -112,7 +144,7 @@ const GirlsClubIndividual = () => {
                                                 {modelStats.hips.unit === 'cm' ? 'cm' : 
                                                  modelStats.hips.unit === 'ft' ? 'ft' : 
                                                  modelStats.hips.unit === '"' ? '"' :
-                                                 modelStats.hips.unit === 'mm' ? 'mm' : 'Unknown'
+                                                 modelStats.hips.unit === 'MM' ? 'mm' : 'Unknown'
                                                 }
                                             </li>
                                             <li>
@@ -136,15 +168,26 @@ const GirlsClubIndividual = () => {
                         )}
                     </div>
                     <div className="right-column">
-                        {Object.keys(modelImageContent).length > 0 && (
-                            <img className="hero-image" src={urlFor(modelImageContent[0].asset._ref).url()} />
+                        {modelData.links !== null && modelData.links !== undefined && modelData.links.modelsWidget && (
+                            <a href={modelData.links.modelsWidget.link} className="models-widget-icon">
+                                <img src={urlFor(modelData.links.modelsWidget.icon.asset._ref).url()} />
+                            </a>
+                        )}
+                        {modelImageContent !== undefined && Object.keys(modelImageContent).length > 0 && (
+                            <img 
+                                className="hero-image" 
+                                src={urlFor(modelImageContent[0].asset._ref).url()} 
+                            />
                         )}
                     </div>
                 </div>
                 <div className="model-collage">
                     <h1>{modelData.modelName}</h1>
-                    <div className="collage">
-                        {(Object.keys(modelImageContent).length > 0) && (
+                    <div 
+                        className="collage"
+                        style={{gap: `${settings ? settings.collageGap : 5}px`}}
+                    >
+                        {modelImageContent !== undefined && (Object.keys(modelImageContent).length > 0) && (
                             Object.values(modelImageContent).map((content, index) => {
                                 return (
                                     <div key={index}>

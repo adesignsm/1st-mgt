@@ -33,11 +33,11 @@ const App = () => {
                     <Route path='/show-packages' element={<ShowPackages />} />
                     <Route path='/girls-club/in-town' element={<GirlsClubInTown />} />
                     <Route path='/girls-club/out-of-town' element={<GirlsClubOutOfTown />} />
-                    <Route path='/girls-club/up-coming' element={<GirlsClubUpcoming />} />
+                    <Route path='/girls-club/upcoming' element={<GirlsClubUpcoming />} />
                     <Route path='/girls-club/:model' element={<GirlsClubIndividual />} />
                     <Route path='/boys-squad/in-town' element={<BoysSquadInTown />} />
                     <Route path='/boys-squad/out-of-town' element={<BoysSquadOutOfTown />} />
-                    <Route path='/boys-squad/up-coming' element={<BoysSquadUpcoming />} />
+                    <Route path='/boys-squad/upcoming' element={<BoysSquadUpcoming />} />
                     <Route path='/boys-squad/:model' element={<BoysSquadIndividual />} />
                 </Routes>
             </BrowserRouter>

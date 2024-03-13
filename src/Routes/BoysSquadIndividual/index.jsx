@@ -13,6 +13,9 @@ const BoysSquadIndividual = () => {
     const [modelImageContent, setModelImageContent] = useState([]);
     const [modelFileContent, setModelFileContent] = useState([]);
     const [imageIndex, setImageIndex] = useState(null);
+    const [settings, setSettings] = useState({
+        collageGap: 5
+    });
 
     const builder = ImageUrlBuilder(sanityClient);
 
@@ -29,10 +32,27 @@ const BoysSquadIndividual = () => {
         setUrlSuffix(decodedSuffix);
     }, []);
 
+    const fetchSettingss = async () => {
+        try {
+            const query = `*[_type == 'settings'][0]`; 
+            const result = await sanityClient.fetch(query);
+
+            if (result && result.individualModelPageSettings_boys) {
+                setSettings(prevSettings => ({
+                    ...prevSettings,
+                    collageGap: result.individualModelPageSettings_boys.collageGap,
+                }))
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     const fetchModelData = async () => {
         try {
             const query = `*[_type == 'boysSquadModels' && defined(modelStats) && defined(modelPictures)] {
                 modelName,
+                links,
                 modelStats,
                 modelPictures,
                 modelLightbox,
@@ -57,6 +77,7 @@ const BoysSquadIndividual = () => {
     useEffect(() => {
         if (urlSuffix) {
             fetchModelData();
+            fetchSettingss();
         }
     }, [urlSuffix]);
 
@@ -86,6 +107,17 @@ const BoysSquadIndividual = () => {
                         {modelData && (
                             <>
                                 <h1>{modelData.modelName}</h1>
+                                <h2>
+                                    <a href={modelData.links
+                                        ? modelData.links.instagramLink 
+                                        : 'https://www.instagram.com' 
+                                    }>
+                                        {modelData.links 
+                                            ? `@${modelData.links.instagramLink.split('/').filter(part => part !== "")[2]}`
+                                            : ''
+                                        }
+                                    </a>
+                                </h2>
                                 <ul className="model-stats-list">
                                     {Object.keys(modelStats).length > 0 && (
                                         <>
@@ -138,6 +170,11 @@ const BoysSquadIndividual = () => {
                         )}
                     </div>
                     <div className="right-column">
+                        {modelData.links !== null && modelData.links !== undefined && modelData.links.modelsWidget && (
+                            <a href={modelData.links.modelsWidget.link} className="models-widget-icon">
+                                <img src={urlFor(modelData.links.modelsWidget.icon.asset._ref).url()} />
+                            </a>
+                        )}
                         {Object.keys(modelImageContent).length > 0 && (
                             <img className="hero-image" src={urlFor(modelImageContent[0].asset._ref).url()} />
                         )}
@@ -145,12 +182,15 @@ const BoysSquadIndividual = () => {
                 </div>
                 <div className="model-collage">
                     <h1>{modelData.modelName}</h1>
-                    <div className="collage">
+                    <div 
+                        className="collage"
+                        style={{gap: `${settings ? settings.collageGap : 5}px`}}
+                    >
                         {(Object.keys(modelImageContent).length > 0 || Object.keys(modelFileContent).length > 0) && (
                             [...Object.values(modelImageContent), ...Object.values(modelFileContent)].map((content, index) => {
                             return (
                                 <div key={index}>
-                                    {content._type === 'image' && (
+                                    {content.asset !== undefined && content._type === 'image' && (
                                         <img 
                                             src={urlFor(content.asset._ref).url()} 
                                             onClick={(e) => handleImageClick(e)}

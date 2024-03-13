@@ -173,6 +173,106 @@ export default {
                     }
                 }
             ]
+        },
+        {
+          name: 'additionalInfo',
+          type: 'array',
+          title: 'Additional Info',
+          description: 'Additional information can be added here. This block is displayed below the contact information.',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  name: 'enText',
+                  title: 'English Text',
+                  type: 'array',
+                  of: [{ type: 'block'}]
+                },
+                {
+                  name: 'krText',
+                  title: 'Korean Text',
+                  type: 'array',
+                  of: [{ type: 'block'}]
+                },
+              ]
+            }
+          ],
+          options: {
+            layout: 'default'
+          }
+        },
+        {
+          name: 'mapSection',
+          title: 'Map Section',
+          type: 'object',
+          description: 'This is the content that is displayed in the map section',
+          fields: [
+            {
+              name: 'phoneNumbers',
+              type: 'array',
+              title: 'Phone Numbers',
+              description: 'Please enter both English & Korean phone numbers as well as the text that is to the left of the phone numbers.',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'enText',
+                      title: 'English Phone Number',
+                      type: 'array',
+                      description: 'When adding the telephone number please add it as a link',
+                      of: [{ type: 'block'}]
+                    },
+                    {
+                      name: 'krText',
+                      title: 'Korean Phone Number',
+                      type: 'array',
+                      description: 'When adding the telephone number please add it as a link',
+                      of: [{ type: 'block'}]
+                    },
+                  ]
+                }
+              ],
+              options: {
+                layout: 'default'
+              },  
+            },
+            {
+              name: 'mapIframe',
+              title: 'Map Embed Link',
+              type: 'string',
+              description: 'Please copy and paste the google maps iframe embed here. Please make sure that the custom size is set to: 1920 x 500',
+            },
+            {
+              name: 'address',
+              type: 'array',
+              title: 'Address',
+              description: 'Please enter both English & Korean addresses.',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'enAddress',
+                      title: 'English Address',
+                      type: 'array',
+                      of: [{ type: 'block'}]
+                    },
+                    {
+                      name: 'krAddress',
+                      title: 'Korean Address',
+                      type: 'array',
+                      of: [{ type: 'block'}]
+                    },
+                  ]
+                }
+              ],
+              options: {
+                layout: 'default'
+              },  
+            },
+          ]
         }
     ]
 }
