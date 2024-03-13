@@ -7,6 +7,7 @@ import './index.css';
 const BoysSquadUpcoming = () => {
     const [models, setModels] = useState([]);
     const [pageData, setPageData] = useState([]);
+    const [showListItem, setShowListItem] = useState(false);
 
     const builder = ImageUrlBuilder(sanityClient);
 
@@ -41,12 +42,19 @@ const BoysSquadUpcoming = () => {
             console.error(error);
         }
     };
+
+    const handleHover = (e) => {
+        const url = e.target.href;
+        const path = new URL(url).pathname;
+
+        if (window.location.href.includes(path)) {
+            setShowListItem(true)
+        }
+    }
   
     useEffect(() => {
       fetchPageData();
     }, []);
-
-    console.log(models)
 
     return (
         <>
@@ -54,7 +62,25 @@ const BoysSquadUpcoming = () => {
                 <div className='title-row'>
                     <div className='column-one'>
                         <h1>Boys Squad</h1>
-                        {pageData && pageData.subTitle && (<h2>{pageData.subTitle}</h2>)}
+                        {pageData && pageData.navigation && (
+                            <ul className='boys-squad-navigation' onMouseLeave={() => setShowListItem(false)}>
+                                {pageData.navigation.map((item, index) => {
+                                    return (
+                                        <li 
+                                            key={index} 
+                                            className={!showListItem && index > 0 ? 'hide' : ''}
+                                        >
+                                            <a 
+                                                href={`/boys-squad/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                                                onMouseEnter={(e) => handleHover(e)}
+                                            >
+                                                {item}
+                                            </a>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        )}
                     </div>
                     <div className='column-two'>
                         {pageData && pageData.breadcrumb && (
