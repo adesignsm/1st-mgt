@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import sanityClient from '../../client';
 import ImageUrlBuilder from '@sanity/image-url';
 import 'jquery-ui-bundle';
@@ -150,6 +150,31 @@ const News = () => {
           });
     }, []);
 
+    const useHorizontalScroll = () => {
+        const elRef = useRef();
+
+        useEffect(() => {
+          const el = elRef.current;
+          if (el) {
+            const onWheel = e => {
+              if (e.deltaY == 0) return;
+
+              e.preventDefault();
+              el.scrollTo({
+                left: el.scrollLeft + e.deltaY,
+                behavior: "smooth"
+              });
+            };
+
+            el.addEventListener("wheel", onWheel);
+            return () => el.removeEventListener("wheel", onWheel);
+          }
+        }, []);
+        return elRef;
+    }
+    
+    const scrollRef = useHorizontalScroll();
+
     useEffect(() => {
         postData.forEach((post) => {
             if (post.hasOwnProperty('postMedia') && post.hasOwnProperty('postDetails')) {
@@ -213,7 +238,7 @@ const News = () => {
                             )}
                         </ul>
                     </div>
-                    <div id='post-gallery' className='post-gallery'>
+                    <div id='post-gallery' className='post-gallery' ref={scrollRef} style={{ overflow: "auto" }}>
                         {postData && (
                             postMedia.map((media, index) => {
                                 if (media._type === 'image') {

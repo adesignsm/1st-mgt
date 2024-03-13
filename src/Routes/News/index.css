@@ -8,7 +8,7 @@
 
 .news-page .left-column {
     position: relative;
-    z-index: 9;
+    z-index: 1;
     width: 30vw;
     padding-left: 5rem;
     padding-right: 2rem;
@@ -58,13 +58,14 @@
     margin-top: -1vh;
     transition: opacity 0.3s ease-in-out, margin-top 0.3s ease-in-out;
     list-style: none;
-    padding-left: 0;
+    padding-left: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-right: 1rem;
     background-color: rgba(255, 255, 255, 0.7);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .view-all-container .view-all-list.active {
