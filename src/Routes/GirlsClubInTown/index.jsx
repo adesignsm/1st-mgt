@@ -7,6 +7,7 @@ import './index.css';
 const GirlsClubInTown = () => {
     const [models, setModels] = useState([]);
     const [pageData, setPageData] = useState([]);
+    const [showListItem, setShowListItem] = useState(false);
 
     const builder = ImageUrlBuilder(sanityClient);
 
@@ -16,7 +17,7 @@ const GirlsClubInTown = () => {
 
     const fetchPageData = async () => {
         try {
-            const query = `*[_type == 'girlsClubInTownPage'][0]`;
+            const query = `*[_type == 'girlsClubInTown'][0]`;
             const result = await sanityClient.fetch(query);
             setPageData(result);
         } catch (error) {
@@ -41,6 +42,15 @@ const GirlsClubInTown = () => {
             console.error(error);
         }
     };
+
+    const handleHover = (e) => {
+        const url = e.target.href;
+        const path = new URL(url).pathname;
+
+        if (window.location.href.includes(path)) {
+            setShowListItem(true)
+        }
+    }
   
     useEffect(() => {
       fetchPageData();
@@ -52,7 +62,25 @@ const GirlsClubInTown = () => {
                 <div className='title-row'>
                     <div className='column-one'>
                         <h1>Girls Club</h1>
-                        {pageData && pageData.subTitle && (<h2>{pageData.subTitle}</h2>)}
+                        {pageData && pageData.navigation && (
+                            <ul className='girls-club-navigation' onMouseLeave={() => setShowListItem(false)}>
+                                {pageData.navigation.map((item, index) => {
+                                    return (
+                                        <li 
+                                            key={index} 
+                                            className={!showListItem && index > 0 ? 'hide' : ''}
+                                        >
+                                            <a 
+                                                href={`/girls-club/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                                                onMouseEnter={(e) => handleHover(e)}
+                                            >
+                                                {item}
+                                            </a>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        )}
                     </div>
                     <div className='column-two'>
                         {pageData && pageData.breadcrumb && (
