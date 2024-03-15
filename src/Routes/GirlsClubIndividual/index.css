@@ -1,3 +1,11 @@
+.girlsclub-individual-page {
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d9d9d9",GradientType=1);
+}
+
 .girlsclub-individual-page .hero {
     display: flex;
     flex-direction: row;
@@ -88,4 +96,58 @@
     width: 500px;
     object-fit: contain;
     cursor: pointer;
+}
+
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    
+
+
+    .girlsclub-individual-page .model-collage h1 {
+visibility: hidden;
+    }
+    
+    .girlsclub-individual-page .hero .right-column {
+        visibility: hidden;
+    }
+    .girlsclub-individual-page .hero .left-column h1 {
+        font-size: 2em;
+    }
+    .girlsclub-individual-page .hero .left-column ul > li {
+        font-size: 1em;
+    }
+    .girlsclub-individual-page .hero .left-column {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        height: 50vh;
+        font-family: 'Hemi Head';
+        text-transform: uppercase;
+        padding-left: 8rem;
+        margin-top: 4rem;
+    
+    }
+    
+
+    .girlsclub-individual-page .model-collage {
+        height: auto;
+        width: 90vw;
+        margin-top: -25%;
+    }
+
+    .girlsclub-individual-page .model-collage .collage img {
+        min-width: 30%;
+        width: 300px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+    .girlsclub-individual-page .model-collage .collage video {
+        min-width: 30%;
+        width: 300px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+
 }

@@ -46,8 +46,6 @@ const PopUpEntry = () => {
         setHidePopUp(true);
     }
 
-    console.log(popUpEntrydata.popUpEntry)
-
     return (
         <>
             {popUpEntrydata.toggle === true && (

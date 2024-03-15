@@ -78,4 +78,28 @@
 
 @media only screen and (min-width: 375px) and (max-width: 768px) {
     
+    .boysSquad-intown-page .title-row {
+        
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: first baseline;
+        width: 80vw;
+        margin: 0 auto;
+        padding-bottom: 1rem;
+    }
+    .boysSquad-intown-page .title-row .column-one {
+  
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-transform: uppercase;
+        max-width: 600px;
+        width: 60vw;
+    }
+    .boysSquad-intown-page .models-grid .model-cell {
+        max-width: 100%;
+        text-align: center;
+       
+    }
+
 }

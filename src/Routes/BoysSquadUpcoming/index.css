@@ -1,6 +1,6 @@
 .boysSquad-upcoming-page {
-    height: 100%;
-    width: 100vw;
+    height: 100vh;
+    width: 100%;
     margin-top: 15vh;
     font-family: 'Hemi Head';
 }
@@ -74,4 +74,36 @@
 .boysSquad-upcoming-page .models-grid .model-cell h2 {
     width: 100%;
     text-transform: uppercase;
+}
+
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+    
+    .boysSquad-upcoming-page .title-row {
+       
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: first baseline;
+        width: 80vw;
+        margin: 0 auto;
+        padding-bottom: 1rem;
+    
+    }
+    
+    .boysSquad-upcoming-page .title-row .column-one {
+       
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-transform: uppercase;
+        max-width: 600px;
+        width: 60vw;
+    }
+    .boysSquad-upcoming-page .models-grid .model-cell {
+        max-width: 100%;
+        text-align: center;
+       
+    }
+    
+
 }
