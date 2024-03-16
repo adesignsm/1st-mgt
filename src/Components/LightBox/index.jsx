@@ -36,11 +36,12 @@ const LightBox = ({data}) => {
 
     const handleCloseClick = () => {
         document.getElementById('lightbox').style.display = 'none';
+        const lightboxVideo = document.querySelector('.slide.active .lightbox-video');
         
-        if (document.querySelector('.lightbox-video')) {
-            document.querySelector('.lightbox-video').currentTime = 0;
-            document.querySelector('.lightbox-video').pause();
-        } 
+        if (lightboxVideo) {
+            lightboxVideo.currentTime = 0;
+            lightboxVideo.pause();
+        }
     }
 
     const videoConversion = (source) => {
@@ -50,7 +51,7 @@ const LightBox = ({data}) => {
         const mutatedRef = 'https://cdn.sanity.io/files/gvoh9rir/production/' + modifiedAssetRef;
 
         return (
-            <video className='lightbox-video' controls autoPlay={false}>
+            <video id='lightbox-video' className='lightbox-video' controls autoPlay={false}>
                 <source src={mutatedRef} type="video/mp4" />
             </video>
         );

@@ -37,14 +37,27 @@ const PopUpEntry = () => {
             setHidePopUp(false);
         }, parseInt(timing));
     }
-    
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     const updatePopUpHide = () => {
         setHidePopUp(true);
     }
+
+    const videoConversion = (source) => {
+        const assetRef = source.asset !== undefined ? source.asset._ref : null;
+        const withoutFilePrefix = assetRef !== null ? assetRef.replace('file-', '') : null;
+        const modifiedAssetRef = withoutFilePrefix !== null ? withoutFilePrefix.replace(/-(?=[^-]*$)/, '.') : null;
+        const mutatedRef = 'https://cdn.sanity.io/files/gvoh9rir/production/' + modifiedAssetRef;
+
+        return (
+            <video className='lightbox-video' autoPlay loop controls='false' muted>
+                <source src={mutatedRef} type="video/mp4" />
+            </video>
+        );
+    }
+    
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <>
@@ -52,7 +65,9 @@ const PopUpEntry = () => {
                 <div 
                     className={`popup-entry-container ${hidePopUp ? 'hidePopUp' : 'showPopUp'}`}
                     style={{
-                        backgroundImage: backgroundData && `url(${urlFor(backgroundData.asset._ref).url()})`,
+                        backgroundImage: backgroundData[0] && 
+                        backgroundData[0]._type === 'image' && `url(${urlFor(backgroundData[0].asset._ref).url()})`,
+                        
                         height: popUpEntrydata && `${popUpEntrydata.popUpEntry.bannerSize.height}vh`,
                         width: popUpEntrydata && `${popUpEntrydata.popUpEntry.bannerSize.width}vw`
                     }}
@@ -69,6 +84,9 @@ const PopUpEntry = () => {
                         >
                             {popUpEntrydata.popUpEntry.enterButtonText.text}
                         </a>
+                    )}
+                    {backgroundData[0] && backgroundData[0]._type === 'file' && (
+                        videoConversion(backgroundData[0])
                     )}
                 </div>
             )}

@@ -13,10 +13,23 @@ body, html {
     background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(247,207,225,1) 50%, rgba(217,217,217,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d9d9d9",GradientType=1);
+    scroll-behavior: smooth;
+    scroll-snap-type: both mandatory;
 }
 
 * {
     user-select: none;
+}
+
+.filler {
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    position: relative;
+}
+
+.filler.hide {
+    display: none;
 }
 
 .header {
@@ -46,4 +59,14 @@ button, h2, h3 {
 
 .kr {
     letter-spacing: -2px;
+}
+
+.animate-left {
+    margin-left: 0 !important;
+    opacity: 1 !important;
+}
+
+.animate-right {
+    margin-right: 0 !important;
+    opacity: 1 !important;
 }
