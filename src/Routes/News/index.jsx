@@ -47,8 +47,12 @@ const News = () => {
         }
     }
 
-    const handleViewAllClick = () => {
-        setShowViewAll(!showViewAll);
+    const handleViewAllEnter = () => {
+        setShowViewAll(true);
+    }
+
+    const handleViewAllLeave = () => {
+        setShowViewAll(false);
     }
 
     const handlePostClick = (e) => {
@@ -175,6 +179,19 @@ const News = () => {
     
     const scrollRef = useHorizontalScroll();
 
+    const addAnimations = () => {
+        const leftColumn = document.querySelector('.news-page .left-column');
+        const rightColumn = document.querySelector('.news-page .right-column');
+
+        setTimeout(() => {
+            leftColumn.classList.add('animate-left');
+        }, 425);
+
+        setTimeout(() => {
+            rightColumn.classList.add('animate-right');
+        }, 525);
+    }
+
     useEffect(() => {
         postData.forEach((post) => {
             if (post.hasOwnProperty('postMedia') && post.hasOwnProperty('postDetails')) {
@@ -191,6 +208,10 @@ const News = () => {
         return () => {
           window.removeEventListener('mousemove', handleMouseMove);
         }
+    }, []);
+
+    useEffect(() => {
+        addAnimations();
     }, []);
 
     return (
@@ -215,12 +236,16 @@ const News = () => {
                                 id='hover-thumbnail' 
                                 src={postThumb}
                                 style={{
-                                    top: thumbPos.y - 200,
-                                    left: thumbPos.x - 400,
+                                    top: thumbPos.y,
+                                    left: thumbPos.x,
                                 }}
                             />
                         )}
-                        <button id='view-all-button' onClick={handleViewAllClick}>View All</button>
+                        <button 
+                            id='view-all-button' 
+                            onMouseEnter={handleViewAllEnter}
+                            onMouseLeave={handleViewAllLeave}
+                        >View All
                         <ul className={`view-all-list ${showViewAll ? 'active' : ''}`}>
                             {postData && (
                                 postData.map((post, index) => {
@@ -237,6 +262,7 @@ const News = () => {
                                 })
                             )}
                         </ul>
+                        </button>
                     </div>
                     <div id='post-gallery' className='post-gallery' ref={scrollRef} style={{ overflow: "auto" }}>
                         {postData && (

@@ -58,11 +58,11 @@ const FirstMgt = () => {
 
         setTimeout(() => {
             leftColumn.classList.add('animate-left');
-        }, 250);
+        }, 425);
 
         setTimeout(() => {
             rightColumn.classList.add('animate-right');
-        }, 350);
+        }, 525);
     }
 
     useEffect(() => {
@@ -88,16 +88,19 @@ const FirstMgt = () => {
                 target: 'instafeed-dreamGirls'
             });
     
-            instagramFeedNaughtyBoys.run();
-            instagramFeedDreamGirls.run();
+            if (firstMgtLoaded) {
+                instagramFeedNaughtyBoys.run();
+                instagramFeedDreamGirls.run();
+            }
+            
             setNaughtyBoysLoaded(true);
             setDreamGirlsLoaded(true);
         }
-    }, [firstMgtIg, naughtyBoyDreamGirlsIg]);
+    }, [firstMgtIg, naughtyBoyDreamGirlsIg, firstMgtLoaded]);
 
-    document.addEventListener('DOMContentLoaded', () => {
+    useEffect(() => {
         addAnimations();
-    });
+    }, []);
 
     return (
         <>  
@@ -156,14 +159,6 @@ const FirstMgt = () => {
                     </div>
                 </main>
                 <main className='naughty-boys-dream-girls-instagram'>
-                    <div className='instagram-feed-container'>
-                        <div className='instagram-container'>
-                            <div id='instafeed-dreamGirls' className='instagram-grid'></div>
-                        </div>
-                        <div className='instagram-container'>
-                            <div id='instafeed-naughtyBoys' className='instagram-grid'></div>
-                        </div>
-                    </div>
                     <article className='copy-container'>
                         {naughtyBoyDreamGirlsIg && (
                             <>
@@ -172,6 +167,14 @@ const FirstMgt = () => {
                             </>
                         )}
                     </article>
+                    <div className='instagram-feed-container'>
+                        <div className='instagram-container'>
+                            <div id='instafeed-dreamGirls' className='instagram-grid'></div>
+                        </div>
+                        <div className='instagram-container'>
+                            <div id='instafeed-naughtyBoys' className='instagram-grid'></div>
+                        </div>
+                    </div>
                 </main>
                 <main className='projects-and-clients'>
                     <div className='projects-column'>

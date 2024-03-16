@@ -15,6 +15,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-left: -1rem;
+    opacity: 0;
+    transition: all .6s ease;
 }
 
 .emails-container .general-inquiry-container,
@@ -55,6 +58,9 @@
     align-items: flex-end;
     flex-direction: column;
     gap: 50px;
+    margin-right: -1rem;
+    opacity: 0;
+    transition: all .6s ease;
 }
 
 .additional-info-container h4 {
@@ -115,6 +121,11 @@
 .map-section .map .iframe-container iframe {
     display: flex;
     width: 100%;
+}
+
+.map-section .addresses {
+    align-self: flex-end;
+    text-align: right;
 }
 
 @media only screen and (min-width: 375px) and (max-width: 768px) {

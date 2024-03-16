@@ -77,6 +77,12 @@ export default {
                     title: 'Font File Upload',
                     type: 'file',
                     description: 'Upload a font file.'
+                },
+                {
+                    name: 'rowCount',
+                    title: 'Model Thumbnail Count Per Row',
+                    description: 'Adjust the amount of Model thumbnails per row (Maximum 3, Minnimum 1)',
+                    type: 'number'
                 }
             ]
         },
@@ -91,6 +97,12 @@ export default {
                     title: 'Font File Upload',
                     type: 'file',
                     description: 'Upload a font file.'
+                },
+                {
+                    name: 'rowCount',
+                    title: 'Model Thumbnail Count Per Row',
+                    description: 'Asjust the amount of Model thumbnails per row (Maximum 3, Minnimum 1)',
+                    type: 'number'
                 }
             ]
         },

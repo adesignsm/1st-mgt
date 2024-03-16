@@ -38,6 +38,10 @@
     transition: all .3s ease;
 }
 
+.boysSquad-intown-page .title-row .column-one ul li:hover {
+    opacity: 0.6;
+}
+
 .boysSquad-intown-page .title-row .column-one ul li.hide {
     opacity: 0;
     pointer-events: none;
@@ -59,6 +63,24 @@
     width: 80vw;
     margin: 0 auto;
     gap: 50px;
+    justify-content: center;
+}
+
+.boysSquad-intown-page .models-grid.two-count {
+    width: 60vw;
+}
+
+.boysSquad-intown-page .models-grid.two-count .model-cell {
+    max-width: 40%;
+}
+
+
+.boysSquad-intown-page .models-grid.one-count {
+    width: 40vw;
+}
+
+.boysSquad-intown-page .models-grid.one-count .model-cell {
+    max-width: 100%;
 }
 
 .boysSquad-intown-page .models-grid .model-cell {

@@ -29,6 +29,19 @@ const Contact = () => {
         }
     };
 
+    const addAnimations = () => {
+        const emailsContainer = document.querySelector('.emails-container');
+        const additionalInfoContainer = document.querySelector('.additional-info-container');
+
+        setTimeout(() => {
+            emailsContainer.classList.add('animate-left');
+        }, 425);
+
+        setTimeout(() => {
+            additionalInfoContainer.classList.add('animate-right');
+        }, 525);
+    }
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -43,6 +56,10 @@ const Contact = () => {
             setAddressData(data[0].mapSection.address);
         }
     }, [data]);
+
+    useEffect(() => {
+        addAnimations();
+    }, []);
 
     return (
         <>

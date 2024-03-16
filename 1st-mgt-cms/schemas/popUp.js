@@ -98,8 +98,20 @@ export default {
                 {
                     name: 'backgrounImage',
                     title: 'Background Image',
-                    type: 'image',
-                    description: 'Upload an image here to apply a background image to the pop up. *Remove the image to leave th pop up blank.'
+                    type: 'array',
+                    description: 'Upload an image or video here to apply a background image to the pop up. *Remove the image to leave th pop up blank.',
+                    of: [
+                        {
+                            type: 'image',
+                            options: {
+                                hotspot: true
+                            }
+                        },
+                        {
+                            type: 'file',
+                            title: 'Video'
+                        }
+                    ]
                 },
                 {
                     name: 'popupTiming',

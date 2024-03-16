@@ -4,10 +4,11 @@ import ImageUrlBuilder from '@sanity/image-url';
 
 import './index.css';
 
-const GirlsClubInTown = () => {
+const GirlsClubInTown = ({settings}) => {
     const [models, setModels] = useState([]);
     const [pageData, setPageData] = useState([]);
     const [showListItem, setShowListItem] = useState(false);
+    const { rowCount } = settings.girlsClubPagesSettings || 3;
 
     const builder = ImageUrlBuilder(sanityClient);
 
@@ -59,6 +60,7 @@ const GirlsClubInTown = () => {
     return (
         <>
             <main className='girlsclub-intown-page'>
+                <div className='filler' />
                 <div className='title-row'>
                     <div className='column-one'>
                         <h1>Girls Club</h1>
@@ -90,7 +92,7 @@ const GirlsClubInTown = () => {
                         )}
                     </div>
                 </div>
-                <div className='models-grid'>
+                <div className={`models-grid ${rowCount === 1 ? 'one' : rowCount === 2 ? 'two' : ''}-count`}>
                     {models && (
                         models.map((model, index) => {
                             return (
