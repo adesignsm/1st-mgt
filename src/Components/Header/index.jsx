@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './index.css';
 import HEADER_LOGO from '../../Assets/Logos/entry_gif.gif';
 import Menu from '../Menu';
+import { Search } from '../Search';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(true);
@@ -37,6 +38,7 @@ const Header = () => {
                 </div>
                 <div className='right-column'>
                     <h1>Search</h1>
+                    <Search />
                 </div>
             </header>
             <Menu menuOpen={menuOpen} updateMenuOpen={updateMenuOpen}/>

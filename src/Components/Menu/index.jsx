@@ -68,13 +68,21 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
         }
     }
 
-    const handleDropdownClick = (e) => {
+    const handleDropdownClickMobile = (e) => {
         if (e.target.id === 'girls-club-menu') {
             setBoysDropdownVisible(false);
             setGirlsDropdownVisible(!girlsDropdownVisible);
         } else if (e.target.id === 'boys-squad-menu') {
             setGirlsDropdownVisible(false);
             setBoysDropdownVisible(!boysDropdownVisible);
+        }
+    }
+
+    const handleDropdownClickDesktop = (e) => {
+        if (e.target.id === 'girls-club-menu') {
+            window.location.href = '/girls-club/in-town'
+        } else if (e.target.id === 'boys-squad-menu') {
+            window.location.href = '/boys-squad/in-town'
         }
     }
 
@@ -96,7 +104,10 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 className='main-navigation-item' 
                                 onMouseEnter={(e) => handleDropdownEnter(e)}
                                 onMouseLeave={(e) => handleDropdownLeave(e)}
-                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : null}
+                                onClick={width <= 768 ? 
+                                    (e) => handleDropdownClickMobile(e) : 
+                                    (e) => handleDropdownClickDesktop(e)
+                                }
                             >girls club</p>
                             <ul 
                                 id='girls-club-dropdown' 
@@ -115,7 +126,10 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                                 className='main-navigation-item' 
                                 onMouseEnter={(e) => handleDropdownEnter(e)} 
                                 onMouseLeave={(e) => handleDropdownLeave(e)}
-                                onClick={width <= 768 ? (e) => handleDropdownClick(e) : null}
+                                onClick={width <= 768 ? 
+                                    (e) => handleDropdownClickMobile(e) : 
+                                    (e) => handleDropdownClickDesktop(e)
+                                }
                             >boys squad</p>
                             <ul 
                                 id='boys-squad-dropdown' 
@@ -138,7 +152,7 @@ const Menu = ({ menuOpen, updateMenuOpen }) => {
                     <ul className='socials-navigation'>
                         <li><a href='https://www.instagram.com/1stmgt'>@1stmgt</a></li>
                         <li><a href='https://www.instagram.com/_dreamgirlsclub/'>@_dreamgirlsclub</a></li>
-                        <li><a href='@_dreamgirlsclub'>@naughtyboysquad</a></li>
+                        <li><a href='https://www.instagram.com/_naughtyboysquad/'>@naughtyboysquad</a></li>
                     </ul>
                 </div>
                 <div className='right-column'>
